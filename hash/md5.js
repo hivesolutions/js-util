@@ -260,8 +260,7 @@ Md5._md5 = function(stringValue) {
     // the intermediate md5 cycles
     for (var index = 64; index <= stringValue.length; index += 64) {
         // runs the intermediate md5 cycle
-        Md5.__cmn(state, Md5.md5Block(stringValue.substring(index - 64,
-                        index)));
+        Md5.__cmn(state, Md5.md5Block(stringValue.substring(index - 64, index)));
     }
 
     // retrieves the initial string value

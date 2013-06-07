@@ -27,16 +27,17 @@ var canvasRenderingContext = window.CanvasRenderingContext2D
         && CanvasRenderingContext2D.prototype;
 
 canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
-    // in case the parameters are not defined
+    // in case the parameters are not defined the
+    // default parameters are used, required
     if (!parameters) {
-        // defined the default parameters
         parameters = [10, 10];
     }
 
     // saves the current state
     this.save();
 
-    // calculates the delta values
+    // calculates the delta values for bot the horizontal
+    // and the vertival dimensions
     var deltaX = x2 - x1;
     var deltaY = y2 - y1;
 
@@ -50,10 +51,9 @@ canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
     // transates to the initial values
     this.translate(x1, y1);
 
-    // moves to the initial position
+    // moves to the initial position top left corner position
+    // and applies the rotation that has been calculated
     this.moveTo(0, 0);
-
-    // rotates the rotation value ammount
     this.rotate(rotation);
 
     // retrieves the parameters length
@@ -65,7 +65,8 @@ canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
     // draws in the first iteration
     var draw = true;
 
-    // start the current x position
+    // start the current x position that is going to be used
+    // at the initial part of the draw loop
     currentX = 0;
 
     // iterates while the current x is smaller
@@ -94,30 +95,16 @@ canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
 }
 
 canvasRenderingContext.roundRectangle = function(x, y, width, height, radius) {
-    // moves to the initial corner
+    // draws the various corners by moving the cursor to each of them
+    // and then applying a quadratic curve with the requested radius
+    // values, this should perform and create the desired rectangle
     this.moveTo(x + radius, y);
-
-    // draws a line to the second corner
     this.lineTo(x + width - radius, y);
-
-    // draws the second corner
     this.quadraticCurveTo(x + width, y, x + width, y + radius);
-
-    // draws a line to the third corner
     this.lineTo(x + width, y + height - radius);
-
-    // draws the third corner
     this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-
-    // draws a line to the fourth corner
     this.lineTo(x + radius, y + height);
-
-    // draws the fourth corner
     this.quadraticCurveTo(x, y + height, x, y + height - radius);
-
-    // draws a line to the first corner
     this.lineTo(x, y + radius);
-
-    // draws the first corner
     this.quadraticCurveTo(x, y, x + radius, y);
 }

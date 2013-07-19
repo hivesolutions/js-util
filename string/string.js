@@ -98,15 +98,16 @@ String.prototype.formatOptions = function(optionsMap) {
     // sets the initial current index
     var currentIndex = 0;
 
-    // iterates indefinitely
-    while (1) {
+    // iterates indefinitely to format the various
+    // matched according to the current regex
+    while (true) {
         // exec the options regex against the string value
-        // retrieving the match result
+        // retrieving the match result and in case the result
+        // is not valid breaks the current loop
         var matchResult = this.optionsRegex.exec(this);
-
-        // in case the match is invalid
-        if (matchResult == null)
+        if (matchResult == null) {
             break;
+        }
 
         // retrieves the option start index
         var optionStartIndex = matchResult.index;
@@ -123,13 +124,11 @@ String.prototype.formatOptions = function(optionsMap) {
         // appends the previous part string to the string buffer
         stringBuffer.append(previousPartString);
 
-        // retrieves the real option value
+        // retrieves the real option value, converts
+        // the real option into string and then appends
+        // it to the string buffer
         var realOptionValue = optionsMap[optionValue];
-
-        // converts the real option into string
         var realOptionValueString = String(realOptionValue);
-
-        // appends the real option value string to the string buffer
         stringBuffer.append(realOptionValueString);
 
         // sets the current index as the option end index plus one
@@ -142,10 +141,9 @@ String.prototype.formatOptions = function(optionsMap) {
     // writes the last part string to the string buffer
     stringBuffer.append(lastPartString);
 
-    // retrieves the string value
+    // retrieves the string value from the string buffer and
+    // returns it as the result for the current method
     var stringValue = stringBuffer.toString();
-
-    // returns the string value
     return stringValue;
 }
 

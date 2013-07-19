@@ -101,9 +101,8 @@ StringBuffer.prototype.replace = function(string) {
  */
 StringBuffer.prototype.removeLastAppend = function() {
     // sets the last element as not valid (empty)
+    // and returns the current (self) context
     this.buffer[this.buffer.size() - 1] = "";
-
-    // returns the context
     return this;
 }
 

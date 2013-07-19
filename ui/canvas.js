@@ -24,7 +24,7 @@
 // __license__   = GNU General Public License (GPL), Version 3
 
 var canvasRenderingContext = window.CanvasRenderingContext2D
-        && CanvasRenderingContext2D.prototype;
+        && CanvasRenderingContext2D.prototype || {};
 
 canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
     // in case the parameters are not defined the

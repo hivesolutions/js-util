@@ -77,12 +77,15 @@ Base64.encode = function(input, encode) {
 }
 
 Base64.decode = function(input, decode) {
+    // initializes all the variables that will be used
+    // in the decoding process of the base64 string
     var output = "";
     var character1, character2, character3;
     var encoding1, encoding2, encoding3, encoding4;
     var index = 0;
 
-    // retrieves the decode value
+    // retrieves the decode value, defaulting to false
+    // in case the attribute is not provided
     decode = decode ? decode : false;
 
     // removes all the invalid values from the input

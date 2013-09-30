@@ -26,6 +26,13 @@
 var canvasRenderingContext = window.CanvasRenderingContext2D
         && CanvasRenderingContext2D.prototype || {};
 
+canvasRenderingContext.line = function(x1, y1, x2, y2) {
+    this.save();
+    this.moveTo(x1, y1);
+    this.lineTo(x2, y2);
+    this.restore();
+};
+
 canvasRenderingContext.dashedLine = function(x1, y1, x2, y2, parameters) {
     // in case the parameters are not defined the
     // default parameters are used, required

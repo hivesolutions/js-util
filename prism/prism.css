@@ -1,55 +1,42 @@
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
 code[class*="language-"],
 pre[class*="language-"] {
     color: black;
-    text-shadow: 0px 1px white;
-    font-family: Consolas, Monaco, "Andale Mono", monospace;
     direction: ltr;
+    font-family: Consolas, Monaco, "Andale Mono", monospace;
+    hyphens: none;
+    -ms-hyphens: none;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    tab-size: 4;
+    -o-tab-size: 4;
+    -moz-tab-size: 4;
     text-align: left;
+    text-shadow: 0px 1px white;
     white-space: pre;
     word-spacing: normal;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-    text-shadow: none;
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"]::-moz-selection {
     background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
     text-shadow: none;
-    background: #b3d4fc;
 }
 
-@media print {
-    code[class*="language-"],
-    pre[class*="language-"] {
-        text-shadow: none;
-    }
+pre[class*="language-"]::selection,
+code[class*="language-"]::selection {
+    background: #b3d4fc;
+    text-shadow: none;
 }
 
 pre[class*="language-"] {
-    padding: 1em;
     margin: 0.5em 0em 0.5em 0em;
     overflow: auto;
+    padding: 1em;
 }
 
 :not(pre) > code[class*="language-"] {
-    padding: 0.1em 0.1em 0.1em 0.1em;
     border-radius: 0.3em;
+    padding: 0.1em 0.1em 0.1em 0.1em;
 }
 
 .token.comment,
@@ -89,8 +76,8 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-    color: #a67f59;
     background: hsla(0, 0%, 100%, 0.5);
+    color: #a67f59;
 }
 
 .token.atrule,

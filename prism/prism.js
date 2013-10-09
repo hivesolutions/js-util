@@ -5,7 +5,6 @@
  * @author Lea Verou http://lea.verou.me
  */
 
-// private helper vars
 var lang = /\blang(?:uage)?-(?!\*)(\w+)\b/i;
 
 var _ = self.Prism = {

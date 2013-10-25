@@ -67,3 +67,9 @@ if (typeof(Array.prototype.indexOfObject) === "undefined") {
         return -1;
     };
 }
+
+if (typeof(Array.prototype.isIn) === "undefined") {
+    Array.prototype.isIn = function(obj) {
+        return this.indexOf(obj) != -1;
+    };
+}

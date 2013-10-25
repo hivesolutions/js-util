@@ -35,3 +35,35 @@ if (typeof(Array.prototype.indexOf) === "undefined") {
         return -1;
     };
 }
+
+if (typeof(Array.prototype.indexOfObject) === "undefined") {
+    Array.prototype.indexOfObject = function(obj) {
+        var isObject = typeof obj == "object";
+        if (!isObject) {
+            return this.indexOf(obj);
+        }
+
+        for (var index = 0; index < this.length; index++) {
+            var valid = true;
+            var _obj = this[index];
+
+            for (var key in obj) {
+                var value = obj[key];
+                var _value = _obj[key];
+                if (value == _value) {
+                    continue;
+                }
+                valid = false;
+                break;
+            }
+
+            if (!valid) {
+                continue;
+            }
+
+            return index;
+        }
+
+        return -1;
+    };
+}

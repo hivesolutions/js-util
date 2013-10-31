@@ -177,10 +177,14 @@ String.prototype.formatC = function() {
  *
  * @return {String} The capitalized string.
  */
-String.prototype.capitalize = function() {
-    return this.replace(/[\u00bf-\u1fff\u2c00-\ud7ff\w]+/g, function(a) {
-                return a.charAt(0).toUpperCase() + a.substr(1);
-            });
+String.prototype.capitalize = function(local) {
+    var f = function(a) {
+        return a.charAt(0).toUpperCase() + a.substr(1);
+    };
+
+    return local
+            ? f(this)
+            : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 }
 
 /**
@@ -188,10 +192,14 @@ String.prototype.capitalize = function() {
  *
  * @return {String} The decapitalized string.
  */
-String.prototype.decapitalize = function() {
-    return this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, function(a) {
-                return a.charAt(0).toLowerCase() + a.substr(1);
-            });
+String.prototype.decapitalize = function(local) {
+    var f = function(a) {
+        return a.charAt(0).toLowerCase() + a.substr(1);
+    };
+
+    return local
+            ? f(this)
+            : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 }
 
 /**

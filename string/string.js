@@ -148,12 +148,37 @@ String.prototype.formatOptions = function(optionsMap) {
 }
 
 /**
+ * Formats the current string according to the c language standard template
+ * format (provides backward compatability).
+ *
+ * @return {String} The formatted string according to the standard c template
+ *         format.
+ */
+String.prototype.formatC = function() {
+    // sets the string value as the current
+    // instance value, uses the current context
+    var stringValue = this;
+
+    // iterates over all the arguments present to be
+    // able to replace them in the target string
+    for (var index = 0; index < arguments.length; index++) {
+        // replaces the string value for the template value
+        // this assumes that the value is a string value
+        stringValue = stringValue.replace("%s", arguments[index]);
+    }
+
+    // returns the now replaced string value to the
+    // caller method to be used as formatted
+    return stringValue;
+}
+
+/**
  * Capitalizes the string value.
  *
  * @return {String} The capitalized string.
  */
 String.prototype.capitalize = function() {
-    return this.replace(/\w+/g, function(a) {
+    return this.replace(/[\u00bf-\u1fff\u2c00-\ud7ff\w]+/g, function(a) {
                 return a.charAt(0).toUpperCase() + a.substr(1);
             });
 }
@@ -164,7 +189,7 @@ String.prototype.capitalize = function() {
  * @return {String} The decapitalized string.
  */
 String.prototype.decapitalize = function() {
-    return this.replace(/\w+/g, function(a) {
+    return this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, function(a) {
                 return a.charAt(0).toLowerCase() + a.substr(1);
             });
 }

@@ -55,7 +55,7 @@ pre[class*="language-"] {
 }
 
 .token.property,
-.token.tag,
+.token.etag,
 .token.boolean,
 .token.number,
 .token.constant,

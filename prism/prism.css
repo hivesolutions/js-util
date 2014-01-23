@@ -38,6 +38,10 @@ pre[class*="language-"] {
     padding: 0.1em 0.1em 0.1em 0.1em;
 }
 
+.token {
+    visibility: visible;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,

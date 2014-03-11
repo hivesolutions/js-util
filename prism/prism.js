@@ -88,7 +88,7 @@ var _ = self.Prism = {
         }
 
         if (parent) {
-            language = (parent.className.match(lang) || [, ""])[1];
+            language = (parent.className.match(lang) || [null, ""])[1];
             grammar = _.languages[language];
         }
 

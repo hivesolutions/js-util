@@ -306,7 +306,7 @@ Select._floatValue = function(element, zerify, defaultValue) {
 
     // retrieves the value from the element
     // and parses it as an float
-    var value = element.attr("value");
+    var value = element.val();
     var valueFloat = parseFloat(value);
 
     // in case the float parse was successfull

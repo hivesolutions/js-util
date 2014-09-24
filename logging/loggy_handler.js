@@ -80,10 +80,10 @@ Logging.LoggyHandler.prototype.emit = function(record) {
     // formats the record retrieving the message
     var message = this.format(record);
 
-    // retrieves the record level string
+    // retrieves the record level string and runs the
+    // lowercasing operation in it to retrive the current
+    // valid message type value for it
     var levelString = record.getLevelString();
-
-    // retrieves the message type by lower casing the level string
     var messageType = levelString.toLowerCase();
 
     // sends the log message to loggy

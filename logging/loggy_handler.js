@@ -23,6 +23,8 @@
 // __copyright__ = Copyright (c) 2008-2014 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
+var Logging = Logging || {};
+
 /**
  * Constructor of the class.
  *

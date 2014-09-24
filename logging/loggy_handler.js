@@ -68,12 +68,13 @@ Logging.LoggyHandler.prototype.flush = function() {
 Logging.LoggyHandler.prototype.emit = function(record) {
     this.base.emit(record);
 
-    // in case the structure is not initialized
+    // in case the structure is not initialized, the emit
+    // operation in loggy must be delayed
     if (!this.initialized()) {
-        // adds the record to the records queue
+        // adds the record to the records queue and
+        // then return immediately as there's nothing
+        // else that may be done for now
         this.recordQueue.push(record);
-
-        // returns immediately
         return;
     }
 

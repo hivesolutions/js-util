@@ -52,13 +52,12 @@ Mobile.touchHandler = function(event) {
     }
 
     // creates the new mouse event that will emulate the
-    // touch event that has just been raised and set the
-    // original envent, os that it may be referenced
+    // touch event that has just been raised, it should
+    // be completly equivalent to the original touch
     var mouseEvent = document.createEvent("MouseEvent");
     mouseEvent.initMouseEvent(type, true, true, window, 1, first.screenX,
             first.screenY, first.clientX, first.clientY, false, false, false,
             false, 0, null);
-    mouseEvent.original = event;
 
     // dispatches the event to the original target of the
     // touch event (pure emulation)

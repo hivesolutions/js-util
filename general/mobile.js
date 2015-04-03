@@ -26,10 +26,14 @@
 var Mobile = Mobile || {};
 
 Mobile.touchHandler = function(event) {
+    // retrieves the complete set of touches and uses
+    // only the first one for type reference
     var touches = event.changedTouches;
     var first = touches[0];
     var type = "";
 
+    // switches over the type of touch event associating
+    // the proper equivalent mouse enve to each of them
     switch (event.type) {
         case "touchstart" :
             type = "mousedown";
@@ -47,15 +51,23 @@ Mobile.touchHandler = function(event) {
             return;
     }
 
+    // creates the new mouse event that will emulate the
+    // touch event that has just been raised and set the
+    // original envent, os that it may be referenced
     var mouseEvent = document.createEvent("MouseEvent");
     mouseEvent.initMouseEvent(type, true, true, window, 1, first.screenX,
             first.screenY, first.clientX, first.clientY, false, false, false,
             false, 0, null);
+    mouseEvent.original = event;
 
+    // dispatches the event to the original target of the
+    // touch event (pure emulation)
     first.target.dispatchEvent(mouseEvent);
 };
 
 Mobile.init = function() {
+    // registers the complete set of touch event in the
+    // document so that proper emulation is possible
     document.addEventListener("touchstart", Mobile.touchHandler, true);
     document.addEventListener("touchmove", Mobile.touchHandler, true);
     document.addEventListener("touchend", Mobile.touchHandler, true);

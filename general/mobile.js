@@ -65,6 +65,13 @@ Mobile.touchHandler = function(event) {
 };
 
 Mobile.init = function() {
+    // verifies if the event listener adding is suported
+    // for the current environment and in case it's not
+    // returns immediately to avoid errors
+    if (!document.addEventListener) {
+        return;
+    }
+
     // registers the complete set of touch event in the
     // document so that proper emulation is possible
     document.addEventListener("touchstart", Mobile.touchHandler, true);

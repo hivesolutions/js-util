@@ -25,6 +25,18 @@
 
 var Mobile = Mobile || {};
 
+/**
+ * If the mobile touch event propragation structure should performed only under
+ * a previous validation of tag naming.
+ */
+Mobile.SAFE = true;
+
+/**
+ * The list containing the various tags that are considered to be valid for the
+ * mouse operation events, this is only used in case the safe mode is enabled.
+ */
+Mobile.VALID = ["DIV", "IMG", "SPAN", "CANVAS"];
+
 Mobile.touchHandler = function(event) {
     // retrieves the complete set of touches and uses
     // only the first one for type reference
@@ -49,6 +61,14 @@ Mobile.touchHandler = function(event) {
 
         default :
             return;
+    }
+
+    // verifies if the current event is considered to be valid,
+    // this occurs if the target of the type of the target is
+    // considered to be valid according to the current rules
+    var isValid = Mobile.VALID_CLASSES.indexOf(first.target.tagName) == -1;
+    if (Mobile.SAFE && isValid) {
+        return;
     }
 
     // creates the new mouse event that will emulate the

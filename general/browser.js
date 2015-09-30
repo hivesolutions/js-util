@@ -33,7 +33,7 @@ BrowserDetect = function() {
             || "Unknown version";
     BrowserDetect.os = BrowserDetect.searchString(BrowserDetect.DATA_OS)
             || "Unknown OS";
-}
+};
 
 BrowserDetect.searchString = function(data) {
     for (var index = 0; index < data.length; index++) {
@@ -49,7 +49,7 @@ BrowserDetect.searchString = function(data) {
             return data[index].identity;
         }
     }
-}
+};
 
 BrowserDetect.searchVersion = function(dataString) {
     // tries to search for the version search string
@@ -63,7 +63,7 @@ BrowserDetect.searchVersion = function(dataString) {
 
     return parseFloat(dataString.substring(index
             + BrowserDetect.versionSearchString.length + 1));
-}
+};
 
 BrowserDetect.DATA_BROWSER = [{
             string : navigator.userAgent,

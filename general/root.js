@@ -25,9 +25,9 @@
 
 var Object = Object || {};
 
-Object.prototype.isEmpty = function(object) {
-    for (var property in object) {
-        if (object.hasOwnProperty(property)) {
+Object.prototype.isEmpty = function() {
+    for (var property in this) {
+        if (this.hasOwnProperty(property)) {
             return false;
         }
     }

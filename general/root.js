@@ -41,7 +41,7 @@ Object.clone = function(object, recursive) {
     var cloned = new object.constructor();
     for (var key in object) {
         var value = object[key];
-        value = recursive ? clone(value) : value;
+        value = recursive ? Object.clone(value) : value;
         cloned[key] = value;
     }
     return cloned;

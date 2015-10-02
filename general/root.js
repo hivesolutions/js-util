@@ -33,3 +33,16 @@ Object.isEmpty = function(object) {
     }
     return true;
 };
+
+Object.clone = function(object, recursive) {
+    if (object == null || typeof(object) != "object") {
+        return object;
+    }
+    var cloned = new object.constructor();
+    for (var key in object) {
+        var value = object[key];
+        value = recursive ? clone(value) : value;
+        cloned[key] = value;
+    }
+    return cloned;
+}

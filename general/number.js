@@ -49,7 +49,8 @@ Number.DECIMAL_PLACES = {
 
 Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {
     var number = this;
-    var defaultPlaces = Number.DECIMAL_PLACES[currency] || 2;
+    var defaultPlaces = Number.DECIMAL_PLACES[currency];
+    defaultPlaces = defaultPlaces === undefined ? 2 : defaultPlaces;
     places = isNaN(parseInt(places)) ? defaultPlaces : places;
     separator = separator == undefined ? "." : separator;
     thousands = thousands == undefined ? "," : thousands;

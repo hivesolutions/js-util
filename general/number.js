@@ -32,9 +32,25 @@ Number.SYMBOLS = {
     "RUB" : ["₽", 1]
 };
 
+Number.DECIMAL_PLACES = {
+    "EUR" : 2,
+    "USD" : 2,
+    "GBP" : 2,
+    "BRL" : 2,
+    "CAD" : 2,
+    "AUD" : 2,
+    "JPY" : 0,
+    "RUB" : 2,
+    "KRW" : 0,
+    "CHF" : 2,
+    "SGD" : 2,
+    "MXN" : 2
+};
+
 Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {
     var number = this;
-    places = isNaN(places = Math.abs(places)) ? 2 : places;
+    var defaultPlaces = Number.DECIMAL_PLACES[currency] || 2;
+    places = isNaN(places = Math.abs(places)) ? defaultPlaces : places;
     separator = separator == undefined ? "." : separator;
     thousands = thousands == undefined ? "," : thousands;
     var signal = number < 0 ? "-" : "";

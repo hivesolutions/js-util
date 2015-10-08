@@ -30,7 +30,11 @@ Number.SYMBOLS = {
     "USD" : ["$", -1],
     "GBP" : ["£", -1],
     "RUB" : ["₽", 1],
-    "JPY" : ["¥", -1]
+    "JPY" : ["¥", -1],
+    "KRW" : ["₩", -1],
+    "CHF" : ["fr.", 1],
+    "SGD" : ["$", -1],
+    "MXN" : ["$", -1]
 };
 
 Number.DECIMAL_PLACES = {
@@ -50,13 +54,32 @@ Number.DECIMAL_PLACES = {
 
 Number.SEPARATOR = {
     "EUR" : ",",
-    "USD" : ",",
-    "GBP" : ","
+    "USD" : ".",
+    "GBP" : ".",
+    "BRL" : ",",
+    "CAD" : ".",
+    "AUD" : ".",
+    "JPY" : ".",
+    "RUB" : ",",
+    "KRW" : ".",
+    "CHF" : ".",
+    "SGD" : ".",
+    "MXN" : "."
 };
 
 Number.THOUSANDS = {
     "EUR" : " ",
-    "JPY" : ","
+    "USD" : ",",
+    "GBP" : ",",
+    "BRL" : ".",
+    "CAD" : ",",
+    "AUD" : ",",
+    "JPY" : ",",
+    "RUB" : " ",
+    "KRW" : ",",
+    "CHF" : "'",
+    "SGD" : ",",
+    "MXN" : ","
 };
 
 Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {

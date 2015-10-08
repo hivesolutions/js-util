@@ -29,7 +29,8 @@ Number.SYMBOLS = {
     "EUR" : ["€", 1],
     "USD" : ["$", -1],
     "GBP" : ["£", -1],
-    "RUB" : ["₽", 1]
+    "RUB" : ["₽", 1],
+    "JPY" : ["¥", -1]
 };
 
 Number.DECIMAL_PLACES = {
@@ -47,13 +48,26 @@ Number.DECIMAL_PLACES = {
     "MXN" : 2
 };
 
+Number.SEPARATOR = {
+    "EUR" : "."
+};
+
+Number.THOUSANDS = {
+    "EUR" : " ",
+    "JPY" : ","
+};
+
 Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {
     var number = this;
     var defaultPlaces = Number.DECIMAL_PLACES[currency];
+    var defaultSeparator = Number.SEPARATOR[currency];
+    var defaultThousands = Number.THOUSANDS[currency];
     defaultPlaces = defaultPlaces === undefined ? 2 : defaultPlaces;
+    defaultSeparator = defaultSeparator === undefined ? "." : defaultSeparator;
+    defaultThousands = defaultThousands === undefined ? "," : defaultThousands;
     places = isNaN(parseInt(places)) ? defaultPlaces : places;
-    separator = separator == undefined ? "." : separator;
-    thousands = thousands == undefined ? "," : thousands;
+    separator = separator == undefined ? defaultSeparator : separator;
+    thousands = thousands == undefined ? defaultThousands : thousands;
     var signal = number < 0 ? "-" : "";
     var integer = parseInt(n = Math.abs(+number || 0).toFixed(places)) + "";
     var remaining = (remaining = integer.length) > 3 ? remaining % 3 : 0;

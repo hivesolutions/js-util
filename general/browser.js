@@ -104,9 +104,19 @@ BrowserDetect.DATA_BROWSER = [{
             identity : "Netscape"
         }, {
             string : navigator.userAgent,
+            subString : "Edge",
+            identity : "Edge",
+            versionSearch : "Edge"
+        }, {
+            string : navigator.userAgent,
             subString : "MSIE",
             identity : "Explorer",
             versionSearch : "MSIE"
+        }, {
+            string : navigator.userAgent,
+            subString : "Trident",
+            identity : "Explorer",
+            versionSearch : "rv"
         }, {
             string : navigator.userAgent,
             subString : "Gecko",

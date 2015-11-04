@@ -67,6 +67,11 @@ BrowserDetect.searchVersion = function(dataString) {
 
 BrowserDetect.DATA_BROWSER = [{
             string : navigator.userAgent,
+            subString : "Edge",
+            identity : "Edge",
+            versionSearch : "Edge"
+        }, {
+            string : navigator.userAgent,
             subString : "Chrome",
             identity : "Chrome"
         }, {
@@ -102,11 +107,6 @@ BrowserDetect.DATA_BROWSER = [{
             string : navigator.userAgent,
             subString : "Netscape",
             identity : "Netscape"
-        }, {
-            string : navigator.userAgent,
-            subString : "Edge",
-            identity : "Edge",
-            versionSearch : "Edge"
         }, {
             string : navigator.userAgent,
             subString : "MSIE",

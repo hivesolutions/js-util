@@ -54,7 +54,7 @@ String.format = function(stringValue) {
     for (var index = 1; index < arguments.length; index++) {
         // replaces the string value for the template value
         stringValue = stringValue.replace("{" + (index - 1) + "}",
-                arguments[index]);
+            arguments[index]);
     }
 
     // returns the string value
@@ -187,9 +187,7 @@ String.prototype.capitalize = function(local) {
         return a.charAt(0).toUpperCase() + a.substr(1);
     };
 
-    return local
-            ? f(this)
-            : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
+    return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 }
 
 /**
@@ -202,9 +200,7 @@ String.prototype.decapitalize = function(local) {
         return a.charAt(0).toLowerCase() + a.substr(1);
     };
 
-    return local
-            ? f(this)
-            : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
+    return local ? f(this) : this.replace(/[\u00bf-\u1fff\u2c00-\uD7FF\w]+/g, f);
 }
 
 /**
@@ -254,14 +250,12 @@ String.prototype.decodeUtf = function() {
             index++;
         } else if ((character > 191) && (character < 224)) {
             character1 = this.charCodeAt(index + 1);
-            string += String.fromCharCode(((character & 31) << 6)
-                    | (character1 & 63));
+            string += String.fromCharCode(((character & 31) << 6) | (character1 & 63));
             index += 2;
         } else {
             character1 = this.charCodeAt(index + 1);
             character2 = this.charCodeAt(index + 2);
-            string += String.fromCharCode(((character & 15) << 12)
-                    | ((character1 & 63) << 6) | (character2 & 63));
+            string += String.fromCharCode(((character & 15) << 12) | ((character1 & 63) << 6) | (character2 & 63));
             index += 3;
         }
     }

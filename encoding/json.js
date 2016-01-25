@@ -34,11 +34,11 @@ Json.escapeChar = function() {
 
     // the escape characters map
     var escapeCharsMap = {
-        "\b" : "b",
-        "\t" : "t",
-        "\n" : "n",
-        "\f" : "f",
-        "\r" : "r"
+        "\b": "b",
+        "\t": "t",
+        "\n": "n",
+        "\f": "f",
+        "\r": "r"
     }
 
     return function(character) {
@@ -136,12 +136,10 @@ Json.toString = function(object) {
             }
 
             // adds the element to the json elements list
-            jsonElementsList.push((isArray ? "" : "\"" + element + "\":")
-                    + String(elementValue));
+            jsonElementsList.push((isArray ? "" : "\"" + element + "\":") + String(elementValue));
         }
 
-        return (isArray ? "[" : "{") + String(jsonElementsList)
-                + (isArray ? "]" : "}");
+        return (isArray ? "[" : "{") + String(jsonElementsList) + (isArray ? "]" : "}");
     }
 }
 

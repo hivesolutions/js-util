@@ -47,19 +47,19 @@ Mobile.touchHandler = function(event) {
     // switches over the type of touch event associating
     // the proper equivalent mouse enve to each of them
     switch (event.type) {
-        case "touchstart" :
+        case "touchstart":
             type = "mousedown";
             break;
 
-        case "touchmove" :
+        case "touchmove":
             type = "mousemove";
             break;
 
-        case "touchend" :
+        case "touchend":
             type = "mouseup";
             break;
 
-        default :
+        default:
             return;
     }
 
@@ -76,8 +76,8 @@ Mobile.touchHandler = function(event) {
     // be completly equivalent to the original touch
     var mouseEvent = document.createEvent("MouseEvent");
     mouseEvent.initMouseEvent(type, true, true, window, 1, first.screenX,
-            first.screenY, first.clientX, first.clientY, false, false, false,
-            false, 0, null);
+        first.screenY, first.clientX, first.clientY, false, false, false,
+        false, 0, null);
 
     // dispatches the event to the original target of the
     // touch event (pure emulation)

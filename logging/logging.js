@@ -34,9 +34,7 @@ Logging.loggers = {};
 
 Logging.getLogger = function(loggerName) {
     // retrieves the logger name
-    loggerName = loggerName
-            ? loggerName
-            : Logging.constants.DEFAULT_LOGGER_NAME;
+    loggerName = loggerName ? loggerName : Logging.constants.DEFAULT_LOGGER_NAME;
 
     // in case there is no logger with the given
     // name in the logger map
@@ -66,105 +64,105 @@ Logging.constants = {
      *
      * @type Integer
      */
-    CRITICAL : 50,
+    CRITICAL: 50,
 
     /**
      * The error number.
      *
      * @type Integer
      */
-    ERROR : 40,
+    ERROR: 40,
 
     /**
      * The warning number.
      *
      * @type Integer
      */
-    WARNING : 30,
+    WARNING: 30,
 
     /**
      * The info number.
      *
      * @type Integer
      */
-    INFO : 20,
+    INFO: 20,
 
     /**
      * The debug number.
      *
      * @type Integer
      */
-    DEBUG : 10,
+    DEBUG: 10,
 
     /**
      * The not set number.
      *
      * @type Integer
      */
-    NOTSET : 0,
+    NOTSET: 0,
 
     /**
      * The default level number.
      *
      * @type Integer
      */
-    DEFAULT_LEVEL : 20,
+    DEFAULT_LEVEL: 20,
 
     /**
      * The critical value.
      *
      * @type String
      */
-    CRITICAL_VALUE : "CRITICAL",
+    CRITICAL_VALUE: "CRITICAL",
 
     /**
      * The error value.
      *
      * @type String
      */
-    ERROR_VALUE : "ERROR",
+    ERROR_VALUE: "ERROR",
 
     /**
      * The warning value.
      *
      * @type String
      */
-    WARNING_VALUE : "WARNING",
+    WARNING_VALUE: "WARNING",
 
     /**
      * The info value.
      *
      * @type String
      */
-    INFO_VALUE : "INFO",
+    INFO_VALUE: "INFO",
 
     /**
      * The debug value.
      *
      * @type String
      */
-    DEBUG_VALUE : "DEBUG",
+    DEBUG_VALUE: "DEBUG",
 
     /**
      * The not set value.
      *
      * @type String
      */
-    NOTSET_VALUE : "NOTSET",
+    NOTSET_VALUE: "NOTSET",
 
     /**
      * The default level value.
      *
      * @type String
      */
-    DEFAULT_LEVEL_VALUE : "INFO",
+    DEFAULT_LEVEL_VALUE: "INFO",
 
     /**
      * The default logger name.
      *
      * @type String
      */
-    DEFAULT_LOGGER_NAME : "default"
+    DEFAULT_LOGGER_NAME: "default"
 }
 
 Logging.LevelsMap = {};
@@ -358,8 +356,6 @@ Logging.Handler.prototype.format = function(record) {
     return message;
 }
 
-Logging.Handler.prototype.flush = function() {
-}
+Logging.Handler.prototype.flush = function() {}
 
-Logging.Handler.prototype.emit = function(record) {
-}
+Logging.Handler.prototype.emit = function(record) {}

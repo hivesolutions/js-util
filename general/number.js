@@ -26,63 +26,63 @@
 var Number = Number || {};
 
 Number.SYMBOLS = {
-    "EUR" : ["€", 1],
-    "USD" : ["$", -1],
-    "GBP" : ["£", -1],
-    "BRL" : ["R$", -1],
-    "CAD" : ["$", -1],
-    "AUD" : ["$", -1],
-    "JPY" : ["¥", -1],
-    "RUB" : ["₽", 1],
-    "KRW" : ["₩", -1],
-    "CHF" : ["fr.", 1],
-    "SGD" : ["$", -1],
-    "MXN" : ["$", -1]
+    "EUR": ["€", 1],
+    "USD": ["$", -1],
+    "GBP": ["£", -1],
+    "BRL": ["R$", -1],
+    "CAD": ["$", -1],
+    "AUD": ["$", -1],
+    "JPY": ["¥", -1],
+    "RUB": ["₽", 1],
+    "KRW": ["₩", -1],
+    "CHF": ["fr.", 1],
+    "SGD": ["$", -1],
+    "MXN": ["$", -1]
 };
 
 Number.DECIMAL_PLACES = {
-    "EUR" : 2,
-    "USD" : 2,
-    "GBP" : 2,
-    "BRL" : 2,
-    "CAD" : 2,
-    "AUD" : 2,
-    "JPY" : 0,
-    "RUB" : 2,
-    "KRW" : 0,
-    "CHF" : 2,
-    "SGD" : 2,
-    "MXN" : 2
+    "EUR": 2,
+    "USD": 2,
+    "GBP": 2,
+    "BRL": 2,
+    "CAD": 2,
+    "AUD": 2,
+    "JPY": 0,
+    "RUB": 2,
+    "KRW": 0,
+    "CHF": 2,
+    "SGD": 2,
+    "MXN": 2
 };
 
 Number.SEPARATOR = {
-    "EUR" : ",",
-    "USD" : ".",
-    "GBP" : ".",
-    "BRL" : ",",
-    "CAD" : ".",
-    "AUD" : ".",
-    "JPY" : ".",
-    "RUB" : ",",
-    "KRW" : ".",
-    "CHF" : ".",
-    "SGD" : ".",
-    "MXN" : "."
+    "EUR": ",",
+    "USD": ".",
+    "GBP": ".",
+    "BRL": ",",
+    "CAD": ".",
+    "AUD": ".",
+    "JPY": ".",
+    "RUB": ",",
+    "KRW": ".",
+    "CHF": ".",
+    "SGD": ".",
+    "MXN": "."
 };
 
 Number.THOUSANDS = {
-    "EUR" : " ",
-    "USD" : ",",
-    "GBP" : ",",
-    "BRL" : ".",
-    "CAD" : ",",
-    "AUD" : ",",
-    "JPY" : ",",
-    "RUB" : " ",
-    "KRW" : ",",
-    "CHF" : ",",
-    "SGD" : ",",
-    "MXN" : ","
+    "EUR": " ",
+    "USD": ",",
+    "GBP": ",",
+    "BRL": ".",
+    "CAD": ",",
+    "AUD": ",",
+    "JPY": ",",
+    "RUB": " ",
+    "KRW": ",",
+    "CHF": ",",
+    "SGD": ",",
+    "MXN": ","
 };
 
 Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {
@@ -102,12 +102,9 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     var money = signal;
     money += remaining ? integer.substr(0, remaining) + thousands : "";
     money += integer.substr(remaining).replace(/(\d{3})(?=\d)/g,
-            "$1" + thousands);
-    money += places ? separator
-            + Math.abs(number - integer).toFixed(places).slice(2) : "";
-    money = currency
-            ? Number._formatCurrency(money, currency, useSymbol)
-            : money;
+        "$1" + thousands);
+    money += places ? separator + Math.abs(number - integer).toFixed(places).slice(2) : "";
+    money = currency ? Number._formatCurrency(money, currency, useSymbol) : money;
     return money;
 };
 

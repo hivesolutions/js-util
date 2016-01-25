@@ -66,10 +66,8 @@ Base64.encode = function(input, encode) {
         }
 
         // creates the output
-        output = output + Base64._keyString.charAt(encoding1)
-                + Base64._keyString.charAt(encoding2)
-                + Base64._keyString.charAt(encoding3)
-                + Base64._keyString.charAt(encoding4);
+        output = output + Base64._keyString.charAt(encoding1) + Base64._keyString.charAt(encoding2) + Base64._keyString
+            .charAt(encoding3) + Base64._keyString.charAt(encoding4);
     }
 
     // returns the output

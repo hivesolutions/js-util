@@ -42,9 +42,7 @@ StackTrace.DEFAULT_COMPLETE_STACK_VALUE = false;
  */
 StackTrace.getStackTrace = function() {
     // sets the complete stack value
-    var completeStack = completeStack
-            ? completeStack
-            : StackTrace.DEFAULT_COMPLETE_STACK_VALUE;
+    var completeStack = completeStack ? completeStack : StackTrace.DEFAULT_COMPLETE_STACK_VALUE;
 
     // starts the result list
     var result = [];
@@ -77,9 +75,7 @@ StackTrace.getStackTrace = function() {
  */
 StackTrace.getStackTraceString = function(completeStack) {
     // sets the complete stack value
-    var completeStack = completeStack
-            ? completeStack
-            : StackTrace.DEFAULT_COMPLETE_STACK_VALUE;
+    var completeStack = completeStack ? completeStack : StackTrace.DEFAULT_COMPLETE_STACK_VALUE;
 
     // retrieves the stack trace result
     var result = StackTrace.getStackTrace(completeStack);
@@ -103,9 +99,7 @@ StackTrace.getStackTraceString = function(completeStack) {
  */
 StackTrace.parseErrorStack = function(exception, completeStack) {
     // sets the complete stack value
-    var completeStack = completeStack
-            ? completeStack
-            : StackTrace.DEFAULT_COMPLETE_STACK_VALUE;
+    var completeStack = completeStack ? completeStack : StackTrace.DEFAULT_COMPLETE_STACK_VALUE;
 
     // starts the stack list
     var stack = [];
@@ -154,8 +148,8 @@ StackTrace.parseErrorStack = function(exception, completeStack) {
             } else {
                 // retrieves the symbol name
                 var name = functionValue.substring(
-                        functionValue.indexOf("function") + 8,
-                        functionValue.indexOf("("));
+                    functionValue.indexOf("function") + 8,
+                    functionValue.indexOf("("));
 
                 // in case the symbol name is not valid
                 if (name == " ") {

@@ -39,12 +39,12 @@ Logging.LoggyHandler = function(options) {
     var scope = this;
 
     jQuery(document).ready(function() {
-                // starts the loggy structures
-                jQuery("body").loggy("default", options);
+        // starts the loggy structures
+        jQuery("body").loggy("default", options);
 
-                // flushes the handler
-                scope.flush();
-            });
+        // flushes the handler
+        scope.flush();
+    });
 };
 
 Logging.LoggyHandler = _Object.inherit(Logging.LoggyHandler, Logging.Handler);
@@ -89,9 +89,9 @@ Logging.LoggyHandler.prototype.emit = function(record) {
 
     // sends the log message to loggy
     jQuery("body").loggy("log", {
-                message : message,
-                messageType : messageType
-            });
+        message: message,
+        messageType: messageType
+    });
 }
 
 Logging.LoggyHandler.prototype.initialized = function() {

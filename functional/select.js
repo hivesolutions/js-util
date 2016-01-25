@@ -93,17 +93,17 @@ Select.floatValues = function(selector, zerify, defaultValue) {
     // iterates over all the selected elements
     // to convert their value to float
     element.each(function(index, element) {
-                // retrieves the element reference
-                var _element = jQuery(element);
+        // retrieves the element reference
+        var _element = jQuery(element);
 
-                // retrieves the float value for the element
-                var valueFloat = Select._floatValue(_element, zerify,
-                        defaultValue);
+        // retrieves the float value for the element
+        var valueFloat = Select._floatValue(_element, zerify,
+            defaultValue);
 
-                // adds the value float to the list
-                // of value floats
-                valueFloats.push(valueFloat);
-            });
+        // adds the value float to the list
+        // of value floats
+        valueFloats.push(valueFloat);
+    });
 
     // returns the values as floats
     return valueFloats;
@@ -140,15 +140,15 @@ Select.sum = function(firstSelector, secondSelector, decimalPlaces, defaultValue
 Select.sums = function(selector, decimalPlaces, defaultValue) {
     // retrieves the sum value by adding all the partial values
     var value = Select.reduce(Select.floatValues(selector),
-            function(accumulator, item) {
-                // "zerifies" the item value (avoids)
-                // avoids "extra" erroneous values
-                item = isNaN(item) ? 0 : item;
+        function(accumulator, item) {
+            // "zerifies" the item value (avoids)
+            // avoids "extra" erroneous values
+            item = isNaN(item) ? 0 : item;
 
-                // returns the addition of the accumulator
-                // and the item
-                return accumulator + item;
-            });
+            // returns the addition of the accumulator
+            // and the item
+            return accumulator + item;
+        });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -189,15 +189,15 @@ Select.subtract = function(firstSelector, secondSelector, decimalPlaces, default
 Select.subtracts = function(selector, decimalPlaces, defaultValue) {
     // retrieves the subtraction value by adding all the partial values
     var value = Select.reduce(Select.floatValues(selector),
-            function(accumulator, item) {
-                // "zerifies" the item value (avoids)
-                // avoids "extra" erroneous values
-                item = isNaN(item) ? 0 : item;
+        function(accumulator, item) {
+            // "zerifies" the item value (avoids)
+            // avoids "extra" erroneous values
+            item = isNaN(item) ? 0 : item;
 
-                // returns the subtraction of the accumulator
-                // and the item
-                return accumulator - item;
-            });
+            // returns the subtraction of the accumulator
+            // and the item
+            return accumulator - item;
+        });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -224,15 +224,15 @@ Select.multiplys = function(selector, decimalPlaces, defaultValue) {
     // retrieves the multiplication value by multiplying
     // all the partial values
     var value = Select.reduce(Select.floatValues(selector),
-            function(accumulator, item) {
-                // "zerifies" the item value (avoids)
-                // avoids "extra" erroneous values
-                item = isNaN(item) ? 1 : item;
+        function(accumulator, item) {
+            // "zerifies" the item value (avoids)
+            // avoids "extra" erroneous values
+            item = isNaN(item) ? 1 : item;
 
-                // returns the multiplication of the accumulator
-                // and the item
-                return accumulator * item;
-            });
+            // returns the multiplication of the accumulator
+            // and the item
+            return accumulator * item;
+        });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -259,15 +259,15 @@ Select.divides = function(selector, decimalPlaces, defaultValue) {
     // retrieves the division value by dividing
     // all the partial values
     var value = Select.reduce(Select.floatValues(selector),
-            function(accumulator, item) {
-                // "zerifies" the item value (avoids)
-                // avoids "extra" erroneous values
-                item = isNaN(item) ? 1 : item;
+        function(accumulator, item) {
+            // "zerifies" the item value (avoids)
+            // avoids "extra" erroneous values
+            item = isNaN(item) ? 1 : item;
 
-                // returns the division of the accumulator
-                // and the item
-                return accumulator / item;
-            });
+            // returns the division of the accumulator
+            // and the item
+            return accumulator / item;
+        });
 
     // normalizes the value according to the given decimal places
     // and default value
@@ -327,9 +327,7 @@ Select._floatValue = function(element, zerify, defaultValue) {
     if (zerify) {
         // "casts" the value into zero (or default value) in
         // case the parsed value is not a valid float number
-        valueFloat = isNaN(valueFloat) ? (defaultValue === undefined
-                ? 0
-                : defaultValue) : valueFloat;
+        valueFloat = isNaN(valueFloat) ? (defaultValue === undefined ? 0 : defaultValue) : valueFloat;
     }
 
     // returns the float value
@@ -343,9 +341,7 @@ Select._normalizeValue = function(value, decimalPlaces, defaultValue) {
 
     // rounds the value in case the number of decimal places
     // value is defined
-    value = decimalPlaces
-            ? (Math.round(value * rounder) / rounder).toFixed(decimalPlaces)
-            : value;
+    value = decimalPlaces ? (Math.round(value * rounder) / rounder).toFixed(decimalPlaces) : value;
 
     // in case the value is not valid (not a number)
     // sets the default value

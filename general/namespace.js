@@ -37,10 +37,10 @@ String.prototype.namespace = function(separator) {
     var splittedValue = this.split(separator || ".");
 
     splittedValue.inject(window, function(parent, child) {
-                // sets the object value
-                var object = parent[child] = parent[child] || {};
+        // sets the object value
+        var object = parent[child] = parent[child] || {};
 
-                // returns the object
-                return object;
-            });
+        // returns the object
+        return object;
+    });
 }

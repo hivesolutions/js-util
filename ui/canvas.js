@@ -23,8 +23,7 @@
 // __copyright__ = Copyright (c) 2008-2015 Hive Solutions Lda.
 // __license__   = GNU General Public License (GPL), Version 3
 
-var canvasRenderingContext = window.CanvasRenderingContext2D
-        && CanvasRenderingContext2D.prototype || {};
+var canvasRenderingContext = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype || {};
 
 canvasRenderingContext.line = function(x1, y1, x2, y2) {
     this.save();
@@ -116,5 +115,4 @@ canvasRenderingContext.roundRectangle = function(x, y, width, height, radius) {
     this.quadraticCurveTo(x, y, x + radius, y);
 };
 
-canvasRenderingContext.extra = function(x, y, width, height, radius) {
-};
+canvasRenderingContext.extra = function(x, y, width, height, radius) {};

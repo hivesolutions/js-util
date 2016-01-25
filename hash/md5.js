@@ -33,7 +33,8 @@ var Md5 = Md5 || {};
  * @type List
  */
 Md5.HEXADECIMAL_CHARACTERS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-        "a", "b", "c", "d", "e", "f"];
+    "a", "b", "c", "d", "e", "f"
+];
 
 /**
  * Retrieves the hexadecimal md5 digest for the given string value.
@@ -97,9 +98,8 @@ Md5.rhex = function(number) {
     // iterates over the four bytes in the 32 bit
     // number, to convert them into hexadecimal
     for (var index = 0; index < 4; index++) {
-        stringValue += Md5.HEXADECIMAL_CHARACTERS[(number >> (index * 8 + 4))
-                & 0x0f]
-                + Md5.HEXADECIMAL_CHARACTERS[(number >> (index * 8)) & 0x0f];
+        stringValue += Md5.HEXADECIMAL_CHARACTERS[(number >> (index * 8 + 4)) & 0x0f] + Md5.HEXADECIMAL_CHARACTERS[
+            (number >> (index * 8)) & 0x0f];
     }
 
     // returns the string value
@@ -135,10 +135,8 @@ Md5.md5Block = function(stringValue) {
     // iterates over a cycle value
     for (var index = 0; index < 64; index += 4) {
         // calculates the current block value
-        md5Blocks[index >> 2] = stringValue.charCodeAt(index)
-                + (stringValue.charCodeAt(index + 1) << 8)
-                + (stringValue.charCodeAt(index + 2) << 16)
-                + (stringValue.charCodeAt(index + 3) << 24);
+        md5Blocks[index >> 2] = stringValue.charCodeAt(index) + (stringValue.charCodeAt(index + 1) << 8) + (
+            stringValue.charCodeAt(index + 2) << 16) + (stringValue.charCodeAt(index + 3) << 24);
     }
 
     // returns the md5 blocks
@@ -261,7 +259,7 @@ Md5._md5 = function(stringValue) {
     for (var index = 64; index <= stringValue.length; index += 64) {
         // runs the intermediate md5 cycle
         Md5._md5Cycle(state, Md5.md5Block(stringValue.substring(index - 64,
-                        index)));
+            index)));
     }
 
     // retrieves the initial string value

@@ -47,13 +47,9 @@ Cookie.prototype.save = function() {
     var cookieSecure = this.secure;
 
     // creates the cookie final value
-    var cookieFinalValue = cookieName
-            + "="
-            + escape(cookieValue)
-            + ((cookieTimeoutTime) ? ";expires="
-                    + new Date(cookieTimeoutTime * 1000).toUTCString() : "")
-            + ((cookieDomain) ? ";domain=" + cookieDomain : "")
-            + ((cookieSecure) ? ";secure" : "");
+    var cookieFinalValue = cookieName + "=" + escape(cookieValue) + ((cookieTimeoutTime) ? ";expires=" + new Date(
+        cookieTimeoutTime * 1000).toUTCString() : "") + ((cookieDomain) ? ";domain=" + cookieDomain : "") + ((
+        cookieSecure) ? ";secure" : "");
 
     // sets the cookie final value in the document
     document.cookie = cookieFinalValue;
@@ -74,25 +70,25 @@ Cookie.prototype.load = function() {
 
     // iterates over all the cookies in the list
     cookiesList.each(function(value, index) {
-                // splits the cookie value to get the name and the value
-                var cookieSplitted = value.split("=");
+        // splits the cookie value to get the name and the value
+        var cookieSplitted = value.split("=");
 
-                // tims left/right whitespace in the cookie name
-                var cookieName = cookieSplitted[0].replace(/^\s+|\s+$/g, "");
+        // tims left/right whitespace in the cookie name
+        var cookieName = cookieSplitted[0].replace(/^\s+|\s+$/g, "");
 
-                // in case it's the same cookie name
-                if (cookieName == this.name) {
-                    // sets the cookie found flag
-                    cookieFound = true;
+        // in case it's the same cookie name
+        if (cookieName == this.name) {
+            // sets the cookie found flag
+            cookieFound = true;
 
-                    // in case there is a valid cookie value
-                    if (cookieSplitted.size() > 1)
-                        this.value = unescape(cookieSplitted[1].replace(
-                                /^\s+|\s+$/g, ""));
+            // in case there is a valid cookie value
+            if (cookieSplitted.size() > 1)
+                this.value = unescape(cookieSplitted[1].replace(
+                    /^\s+|\s+$/g, ""));
 
-                    throw $break;
-                }
-            }, this);
+            throw $break;
+        }
+    }, this);
 
     return cookieFound;
 }

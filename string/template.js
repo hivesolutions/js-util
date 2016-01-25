@@ -117,22 +117,21 @@ var TEMPLATE_PARAMETER_INTEGER = 3;
 var TEMPLATE_PARAMETER_FLOAT = 4;
 
 var DEFAULT_CALLBACKS = {
-    textEnd : function(data, start, end) {
+    textEnd: function(data, start, end) {
         console.info("textEnd :: '" + data + "'");
     },
-    parameter : function(data, start, end) {
+    parameter: function(data, start, end) {
         console.info("parameter :: '" + data + "'");
     },
-    parameterValue : function(data, start, end) {
+    parameterValue: function(data, start, end) {
         console.info("parameterValue :: '" + data + "'");
     },
-    tagEnd : function(data, start, end) {
+    tagEnd: function(data, start, end) {
         console.info("tagEnd :: '" + data + "'");
     }
 };
 
-var TemplateEngine = function() {
-};
+var TemplateEngine = function() {};
 
 TemplateEngine.prototype.getc = function() {
     var buffer = this.buffer;
@@ -234,14 +233,14 @@ TemplateEngine.prototype.process = function(template, options) {
         // switches over the state to determine the appropriate
         // handling to be made for the current character
         switch (state) {
-            case TEMPLATE_ENGINE_NORMAL :
+            case TEMPLATE_ENGINE_NORMAL:
                 if (current == '$') {
                     state = TEMPLATE_ENGINE_DOLLAR;
                 }
 
                 break;
 
-            case TEMPLATE_ENGINE_DOLLAR :
+            case TEMPLATE_ENGINE_DOLLAR:
                 if (current == '{') {
                     // marks the tag element and calls the text end and tag
                     // begin callbacks
@@ -268,7 +267,7 @@ TemplateEngine.prototype.process = function(template, options) {
 
                 break;
 
-            case TEMPLATE_ENGINE_OPEN :
+            case TEMPLATE_ENGINE_OPEN:
                 if (current == '/') {
                     // reads ahead and sets the ahead set flag
                     ahead = this.getc();
@@ -314,7 +313,7 @@ TemplateEngine.prototype.process = function(template, options) {
 
                 break;
 
-            case TEMPLATE_ENGINE_PARAMETERS :
+            case TEMPLATE_ENGINE_PARAMETERS:
                 if (current == '/') {
                     ahead = this.getc();
                     aheadSet = 1;
@@ -354,7 +353,7 @@ TemplateEngine.prototype.process = function(template, options) {
 
                 break;
 
-            case TEMPLATE_ENGINE_PARAMETER :
+            case TEMPLATE_ENGINE_PARAMETER:
                 if (current == '/') {
                     ahead = this.getc();
                     aheadSet = 1;
@@ -397,7 +396,7 @@ TemplateEngine.prototype.process = function(template, options) {
 
                 break;
 
-            case TEMPLATE_ENGINE_PARAMETER_VALUE :
+            case TEMPLATE_ENGINE_PARAMETER_VALUE:
                 if (current == '/') {
                     ahead = this.getc();
                     aheadSet = 1;
@@ -441,7 +440,7 @@ TemplateEngine.prototype.process = function(template, options) {
 
                 break;
 
-            case TEMPLATE_ENGINE_PARAMETER_VALUE_STRING :
+            case TEMPLATE_ENGINE_PARAMETER_VALUE_STRING:
                 if (current == '\"') {
                     // calls the parameter value callback
                     this.callbackData("parameterValue");
@@ -477,11 +476,10 @@ TemplateHandler.prototype.resolve = function(parameter) {
     var value = parameter.value;
 
     switch (parameter.type) {
-        case TEMPLATE_PARAMETER_REFERENCE :
+        case TEMPLATE_PARAMETER_REFERENCE:
             value = this._get(value);
             break;
-    }
-    ;
+    };
 
     return value;
 };
@@ -502,11 +500,11 @@ TemplateHandler.prototype.eval = function(item, value, operator) {
     var result = false;
 
     switch (operator.value) {
-        case "eq" :
+        case "eq":
             result = item === value;
             break;
 
-        case "neq" :
+        case "neq":
             result = item !== value;
             break;
     }
@@ -528,17 +526,17 @@ TemplateHandler.prototype.process = function(template) {
     // creates the configuration map to be used for the
     // engine to call the callback methods
     var configuration = {
-        callbacks : {
-            textBegin : this.onTextBegin,
-            textEnd : this.onTextEnd,
-            tagBegin : this.onTagBegin,
-            tagCloseBegin : this.onTagCloseBegin,
-            tagEnd : this.onTagEnd,
-            tagName : this.onTagName,
-            parameter : this.onParameter,
-            parameterValue : this.onParameterValue
+        callbacks: {
+            textBegin: this.onTextBegin,
+            textEnd: this.onTextEnd,
+            tagBegin: this.onTagBegin,
+            tagCloseBegin: this.onTagCloseBegin,
+            tagEnd: this.onTagEnd,
+            tagName: this.onTagName,
+            parameter: this.onParameter,
+            parameterValue: this.onParameterValue
         },
-        context : this
+        context: this
     };
 
     // creates a new template engine structure and runs
@@ -564,8 +562,7 @@ TemplateHandler.prototype.closeContext = function() {
     this.currentNode = this.contexts.pop();
 };
 
-TemplateHandler.prototype.onTextBegin = function() {
-};
+TemplateHandler.prototype.onTextBegin = function() {};
 
 TemplateHandler.prototype.onTextEnd = function(data, start, end) {
     // creates a new template node and sets the template
@@ -611,14 +608,14 @@ TemplateHandler.prototype.onTagEnd = function(data, start, end) {
 
     // switches over the temporary node type
     switch (this.temporaryNode.type) {
-        case TEMPLATE_NODE_OPEN :
+        case TEMPLATE_NODE_OPEN:
             // opens a new context for the current node
             this.openContext();
 
             // breaks the switch
             break;
 
-        case TEMPLATE_NODE_CLOSE :
+        case TEMPLATE_NODE_CLOSE:
             // closes the current context (node closed)
             this.closeContext();
 
@@ -647,9 +644,9 @@ TemplateHandler.prototype.onParameter = function(data, start, end) {
     // creates the structure that will hold the complete
     // parameter data, including the value (default to null)
     var parameter = {
-        name : data,
-        value : null,
-        type : null
+        name: data,
+        value: null,
+        type: null
     }
 
     this.temporaryNode.temporaryParameter = parameter;
@@ -679,14 +676,14 @@ TemplateHandler.prototype.traverseNode = function(node) {
     // switches over the type of node to be traversed,
     // to print the correct value
     switch (node.type) {
-        case TEMPLATE_NODE_ROOT :
+        case TEMPLATE_NODE_ROOT:
             // traverses all the nodes in the root node
             this.traverseNodes(node);
 
             // breaks the switch
             break;
 
-        case TEMPLATE_NODE_TEXT :
+        case TEMPLATE_NODE_TEXT:
             // adds the node name (text value) to the
             // string buffer
             this.stringBuffer.push(node.name);
@@ -694,8 +691,8 @@ TemplateHandler.prototype.traverseNode = function(node) {
             // breaks the switch
             break;
 
-        case TEMPLATE_NODE_SINGLE :
-        case TEMPLATE_NODE_OPEN :
+        case TEMPLATE_NODE_SINGLE:
+        case TEMPLATE_NODE_OPEN:
             // retrievs the method to be used in the current
             // traverse operation and executes it with the node
             var method = this["traverse_" + node.name];
@@ -722,18 +719,18 @@ TemplateHandler.prototype.traverse_out = function(node) {
     var _value = value.value;
 
     switch (value.type) {
-        case TEMPLATE_PARAMETER_STRING :
+        case TEMPLATE_PARAMETER_STRING:
             this.stringBuffer.push(_value);
             break;
 
-        case TEMPLATE_PARAMETER_REFERENCE :
+        case TEMPLATE_PARAMETER_REFERENCE:
             _value = this._get(_value);
             var valueS = String(_value);
             this.stringBuffer.push(valueS);
             break;
 
-        case TEMPLATE_PARAMETER_INTEGER :
-        case TEMPLATE_PARAMETER_FLOAT :
+        case TEMPLATE_PARAMETER_INTEGER:
+        case TEMPLATE_PARAMETER_FLOAT:
             var valueS = String(_value);
             this.stringBuffer.push(valueS);
             break;
@@ -784,7 +781,7 @@ TemplateHandler.prototype.traverse_if = function(node) {
         // switches over the type of node to be traversed,
         // to print the correct value
         switch (child.type) {
-            case TEMPLATE_NODE_TEXT :
+            case TEMPLATE_NODE_TEXT:
                 // adds the node name (text value) to the
                 // string buffer
                 result && this.stringBuffer.push(child.name);
@@ -792,8 +789,8 @@ TemplateHandler.prototype.traverse_if = function(node) {
                 // breaks the switch
                 break;
 
-            case TEMPLATE_NODE_SINGLE :
-            case TEMPLATE_NODE_OPEN :
+            case TEMPLATE_NODE_SINGLE:
+            case TEMPLATE_NODE_OPEN:
                 _break = result;
 
                 // retrievs the method to be used in the current

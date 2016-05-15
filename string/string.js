@@ -31,6 +31,13 @@ if (typeof(String.prototype.trim) === "undefined") {
     };
 }
 
+if (typeof(String.prototype.startsWith) === "undefined") {
+    String.prototype.startsWith = function(searchString, position) {
+        position = position || 0;
+        return this.substr(position, searchString.length) === searchString;
+    };
+}
+
 String.prototype.strip = function(s) {
     var regex = new RegExp("^" + s + "+|" + s + "+$", "g");
     return String(this).replace(regex, "");

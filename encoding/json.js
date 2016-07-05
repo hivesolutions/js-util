@@ -39,7 +39,7 @@ Json.escapeChar = function() {
         "\n": "n",
         "\f": "f",
         "\r": "r"
-    }
+    };
 
     return function(character) {
         // need to do these first as their ascii values are > 32 (34 & 92)
@@ -80,7 +80,7 @@ Json.escapeString = function(stringValue) {
     }
 
     return "\"" + parts.join("") + "\"";
-}
+};
 
 /**
  * Converts the given object into a json string.
@@ -141,7 +141,7 @@ Json.toString = function(object) {
 
         return (isArray ? "[" : "{") + String(jsonElementsList) + (isArray ? "]" : "}");
     }
-}
+};
 
 /**
  * Converts the given json string into an object.
@@ -163,4 +163,4 @@ Json.fromString = function(stringValue) {
 
     // returns the evaluated value
     return evaluatedValue;
-}
+};

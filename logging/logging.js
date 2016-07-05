@@ -33,6 +33,9 @@ var Logging = Logging || {};
 Logging.loggers = {};
 
 Logging.getLogger = function(loggerName) {
+    // starts the initial reference to logger
+    var logger = null;
+
     // retrieves the logger name
     loggerName = loggerName ? loggerName : Logging.constants.DEFAULT_LOGGER_NAME;
 
@@ -40,18 +43,18 @@ Logging.getLogger = function(loggerName) {
     // name in the logger map
     if (!Logging.loggers[loggerName]) {
         // creates a new logger with the given name
-        var logger = new Logging.Logger(loggerName);
+        logger = new Logging.Logger(loggerName);
 
         // sets the logger in the loggers map
         Logging.loggers[loggerName] = logger;
     }
 
     // retrieves the logger
-    var logger = Logging.loggers[loggerName];
+    logger = Logging.loggers[loggerName];
 
     // returns the logger
     return logger;
-}
+};
 
 /**
  * The map containig the logging contants.
@@ -163,7 +166,7 @@ Logging.constants = {
      * @type String
      */
     DEFAULT_LOGGER_NAME: "default"
-}
+};
 
 Logging.LevelsMap = {};
 
@@ -192,7 +195,7 @@ Logging.Logger = function(loggerName) {
 
     this.level = Logging.constants.DEFAULT_LEVEL;
     this.handlers = [];
-}
+};
 
 /**
  * Adds a new handler to the logger.
@@ -203,7 +206,7 @@ Logging.Logger = function(loggerName) {
 Logging.Logger.prototype.addHandler = function(handler) {
     // adds the handler to the handlers list
     this.handlers.push(handler);
-}
+};
 
 /**
  * Sets the level of verbosity.
@@ -213,45 +216,45 @@ Logging.Logger.prototype.addHandler = function(handler) {
  */
 Logging.Logger.prototype.setLevel = function(level) {
     this.level = level;
-}
+};
 
 Logging.Logger.prototype.debug = function(messageValue) {
     if (this.isEnabledFor(Logging.constants.DEBUG)) {
         this._log(messageValue, Logging.constants.DEBUG);
     }
-}
+};
 
 Logging.Logger.prototype.info = function(messageValue) {
     if (this.isEnabledFor(Logging.constants.INFO)) {
         this._log(messageValue, Logging.constants.INFO);
     }
-}
+};
 
 Logging.Logger.prototype.warn = function(messageValue) {
     if (this.isEnabledFor(Logging.constants.WARNING)) {
         this._log(messageValue, Logging.constants.WARNING);
     }
-}
+};
 
 Logging.Logger.prototype.error = function(messageValue) {
     if (this.isEnabledFor(Logging.constants.ERROR)) {
         this._log(messageValue, Logging.constants.ERROR);
     }
-}
+};
 
 Logging.Logger.prototype.critical = function(messageValue) {
     if (this.isEnabledFor(Logging.constants.CRITICAL)) {
         this._log(messageValue, Logging.constants.CRITICAL);
     }
-}
+};
 
 Logging.Logger.prototype.isEnabledFor = function(level) {
     return level >= this.getEffectiveLevel();
-}
+};
 
 Logging.Logger.prototype.getEffectiveLevel = function() {
     return this.level;
-}
+};
 
 Logging.Logger.prototype._log = function(messageValue, level) {
     // creates a new record for the message value and the level
@@ -259,12 +262,12 @@ Logging.Logger.prototype._log = function(messageValue, level) {
 
     // handles the record
     this.handle(record);
-}
+};
 
 Logging.Logger.prototype.handle = function(record) {
     // calls the handlers for the record
     this.callHandlers(record);
-}
+};
 
 Logging.Logger.prototype.callHandlers = function(record) {
     // iterates over all the handlers
@@ -275,7 +278,7 @@ Logging.Logger.prototype.callHandlers = function(record) {
         // handles the record with the handler
         handler.handle(record);
     }
-}
+};
 
 /**
  * Constructor of the class.
@@ -288,7 +291,7 @@ Logging.Logger.prototype.callHandlers = function(record) {
 Logging.Record = function(message, level) {
     this.message = message;
     this.level = level;
-}
+};
 
 /**
  * Retrieves the message.
@@ -297,7 +300,7 @@ Logging.Record = function(message, level) {
  */
 Logging.Record.prototype.getMessage = function() {
     return this.message;
-}
+};
 
 /**
  * Retrieves the level.
@@ -306,7 +309,7 @@ Logging.Record.prototype.getMessage = function() {
  */
 Logging.Record.prototype.getLevel = function() {
     return this.level;
-}
+};
 
 /**
  * Retrieves the level string value.
@@ -315,14 +318,14 @@ Logging.Record.prototype.getLevel = function() {
  */
 Logging.Record.prototype.getLevelString = function() {
     return Logging.LevelsMap[this.level];
-}
+};
 
 /**
  * Constructor of the class.
  */
 Logging.Handler = function() {
     this.formatter = null;
-}
+};
 
 /**
  * Sets the formatter for the handler.
@@ -332,30 +335,33 @@ Logging.Handler = function() {
  */
 Logging.Handler.prototype.setFormatter = function(formatter) {
     this.formatter = formatter;
-}
+};
 
 Logging.Handler.prototype.handle = function(record) {
     // emits the record
     this.emit(record);
-}
+};
 
 Logging.Handler.prototype.format = function(record) {
+    // sets the inital value for the message
+    var message = null;
+
     // in case no formatter
     if (!this.formatter) {
         // retrieves the record message
-        var message = record.getMessage();
+        message = record.getMessage();
 
         // returns the message
         return message;
     }
 
     // formats the message using the formatter
-    var message = this.formatter.format(record);
+    message = this.formatter.format(record);
 
     // returns the message
     return message;
-}
+};
 
-Logging.Handler.prototype.flush = function() {}
+Logging.Handler.prototype.flush = function() {};
 
-Logging.Handler.prototype.emit = function(record) {}
+Logging.Handler.prototype.emit = function(record) {};

@@ -48,4 +48,4 @@ Logging.StreamHandler.prototype.emit = function(record) {
 
     // flushes the stream
     this.flush();
-}
+};

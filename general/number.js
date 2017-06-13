@@ -37,7 +37,8 @@ Number.SYMBOLS = {
     "KRW": ["₩", -1],
     "CHF": ["fr.", 1],
     "SGD": ["$", -1],
-    "MXN": ["$", -1]
+    "MXN": ["$", -1],
+    "CNY": ["¥", -1]
 };
 
 Number.DECIMAL_PLACES = {
@@ -52,7 +53,8 @@ Number.DECIMAL_PLACES = {
     "KRW": 0,
     "CHF": 2,
     "SGD": 2,
-    "MXN": 2
+    "MXN": 2,
+    "CNY": 2,
 };
 
 Number.SEPARATOR = {
@@ -67,7 +69,8 @@ Number.SEPARATOR = {
     "KRW": ".",
     "CHF": ".",
     "SGD": ".",
-    "MXN": "."
+    "MXN": ".",
+    "CNY": "."
 };
 
 Number.THOUSANDS = {
@@ -82,7 +85,8 @@ Number.THOUSANDS = {
     "KRW": ",",
     "CHF": ",",
     "SGD": ",",
-    "MXN": ","
+    "MXN": ",",
+    "CNY": ","
 };
 
 Number.prototype.formatMoney = function(places, separator, thousands, currency, useSymbol) {

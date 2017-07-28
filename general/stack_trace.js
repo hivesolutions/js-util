@@ -152,7 +152,7 @@ StackTrace.parseErrorStack = function(exception, completeStack) {
                     functionValue.indexOf("("));
 
                 // in case the symbol name is not valid
-                if (name == " ") {
+                if (name === " ") {
                     // sets the symbol name as anonymous
                     name = "anonymous";
                 }

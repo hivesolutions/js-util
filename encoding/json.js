@@ -43,7 +43,7 @@ Json.escapeChar = function() {
 
     return function(character) {
         // need to do these first as their ascii values are > 32 (34 & 92)
-        if (character == "\"" || character == "\\") {
+        if (character === "\"" || character === "\\") {
             return "\\" + character;
         }
 
@@ -95,9 +95,9 @@ Json.toString = function(object) {
 
     // in case the object is not of type object
     // or in case it is null
-    if (objectType != "object" || object === null) {
+    if (objectType !== "object" || object === null) {
         // simple data type
-        if (objectType == "string") {
+        if (objectType === "string") {
             object = Json.escapeString(object);
         }
 
@@ -113,7 +113,7 @@ Json.toString = function(object) {
         var jsonElementsList = [];
 
         // checks if the object is of type array
-        var isArray = (object && object.constructor == Array);
+        var isArray = (object && object.constructor === Array);
 
         // iterates over all the object
         // properties
@@ -125,11 +125,11 @@ Json.toString = function(object) {
             elementValueType = typeof(elementValue);
 
             // in case the element if of type string
-            if (elementValueType == "string") {
+            if (elementValueType === "string") {
                 elementValue = Json.escapeString(elementValue);
             }
             // in case the element is of type object or null
-            else if (elementValueType == "object" && elementValue !== null) {
+            else if (elementValueType === "object" && elementValue !== null) {
                 // retrieves the element value as the json
                 // value of the element
                 elementValue = Json.toString(elementValue);

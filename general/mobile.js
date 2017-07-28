@@ -66,7 +66,7 @@ Mobile.touchHandler = function(event) {
     // verifies if the current event is considered to be valid,
     // this occurs if the target of the type of the target is
     // considered to be valid according to the current rules
-    var isValid = Mobile.VALID.indexOf(first.target.tagName) == -1;
+    var isValid = Mobile.VALID.indexOf(first.target.tagName) === -1;
     if (Mobile.SAFE && isValid) {
         return;
     }

@@ -38,7 +38,7 @@ BrowserDetect.searchString = function(data) {
         var dataProp = data[index].prop;
         BrowserDetect.versionSearchString = data[index].versionSearch || data[index].identity;
         if (dataString) {
-            if (dataString.indexOf(data[index].subString) != -1) {
+            if (dataString.indexOf(data[index].subString) !== -1) {
                 return data[index].identity;
             }
         } else if (dataProp) {
@@ -52,7 +52,7 @@ BrowserDetect.searchVersion = function(dataString) {
     var index = dataString.indexOf(BrowserDetect.versionSearchString);
 
     // in case the version search string is not found
-    if (index == -1) {
+    if (index === -1) {
         // returns immediately
         return;
     }

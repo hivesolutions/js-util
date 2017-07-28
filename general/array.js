@@ -38,7 +38,7 @@ if (typeof(Array.prototype.indexOf) === "undefined") {
 
 if (typeof(Array.prototype.indexOfObject) === "undefined") {
     Array.prototype.indexOfObject = function(obj) {
-        var isObject = typeof obj == "object";
+        var isObject = typeof obj === "object";
         if (!isObject) {
             return this.indexOf(obj);
         }
@@ -50,7 +50,7 @@ if (typeof(Array.prototype.indexOfObject) === "undefined") {
             for (var key in obj) {
                 var value = obj[key];
                 var _value = _obj[key];
-                if (value == _value) {
+                if (value === _value) {
                     continue;
                 }
                 valid = false;
@@ -70,6 +70,6 @@ if (typeof(Array.prototype.indexOfObject) === "undefined") {
 
 if (typeof(Array.prototype.isIn) === "undefined") {
     Array.prototype.isIn = function(obj) {
-        return this.indexOf(obj) != -1;
+        return this.indexOf(obj) !== -1;
     };
 }

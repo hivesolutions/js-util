@@ -104,11 +104,11 @@ Base64.decode = function(input, decode) {
 
         output = output + String.fromCharCode(character1);
 
-        if (encoding3 != 64) {
+        if (encoding3 !== 64) {
             output = output + String.fromCharCode(character2);
         }
 
-        if (encoding4 != 64) {
+        if (encoding4 !== 64) {
             output = output + String.fromCharCode(character3);
         }
     }

@@ -49,7 +49,7 @@ var _ = self.Prism = {
 
             for (var token in grammar) {
                 if (grammar.hasOwnProperty(token)) {
-                    if (token == before) {
+                    if (token === before) {
                         for (var newToken in insert) {
                             if (insert.hasOwnProperty(newToken)) {
                                 ret[newToken] = insert[newToken];
@@ -269,11 +269,11 @@ var Token = _.Token = function(type, content) {
 };
 
 Token.stringify = function(o, language, parent) {
-    if (typeof o == "string") {
+    if (typeof o === "string") {
         return o;
     }
 
-    if (Object.prototype.toString.call(o) == "[object Array]") {
+    if (Object.prototype.toString.call(o) === "[object Array]") {
         return o.map(function(element) {
             return Token.stringify(element, language, o);
         }).join("");
@@ -289,7 +289,7 @@ Token.stringify = function(o, language, parent) {
         parent: parent
     };
 
-    if (env.type == "comment") {
+    if (env.type === "comment") {
         env.attributes["spellcheck"] = "true";
     }
 
@@ -671,7 +671,7 @@ Prism.hooks.add("wrap", function(env) {
     if (env.language === "groovy" && env.type === "string") {
         var delimiter = env.content[0];
 
-        if (delimiter != "'") {
+        if (delimiter !== "'") {
             env.content = Prism.highlight(env.content, {
                 "expression": {
                     pattern: /([^\\])(\$(\{.*?\}|[\w\.]*))/,

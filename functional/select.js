@@ -298,7 +298,7 @@ Select.divides = function(selector, decimalPlaces, defaultValue) {
 Select._floatValue = function(element, zerify, defaultValue) {
     // in case the element is itself already
     // a value no need to process it
-    if (element.length == 1 && !isNaN(element[0])) {
+    if (element.length === 1 && !isNaN(element[0])) {
         // returns the element
         // as the float value (it's a number)
         return element[0];

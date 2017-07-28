@@ -35,7 +35,7 @@ Object.isEmpty = function(object) {
 };
 
 Object.clone = function(object, recursive) {
-    if (object == null || typeof(object) != "object") {
+    if (object === null || object === undefined || typeof(object) !== "object") {
         return object;
     }
     var cloned = new object.constructor();

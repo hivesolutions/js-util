@@ -117,7 +117,7 @@ String.prototype.formatOptions = function(optionsMap) {
         // retrieving the match result and in case the result
         // is not valid breaks the current loop
         var matchResult = this.optionsRegex.exec(this);
-        if (matchResult == null) {
+        if (matchResult === null) {
             break;
         }
 

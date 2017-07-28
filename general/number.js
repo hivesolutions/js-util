@@ -94,8 +94,8 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     defaultSeparator = defaultSeparator === undefined ? "." : defaultSeparator;
     defaultThousands = defaultThousands === undefined ? "," : defaultThousands;
     places = isNaN(parseInt(places)) ? defaultPlaces : places;
-    separator = separator == undefined ? defaultSeparator : separator;
-    thousands = thousands == undefined ? defaultThousands : thousands;
+    separator = separator === null || separator === undefined ? defaultSeparator : separator;
+    thousands = thousands === null || thousands === undefined ? defaultThousands : thousands;
     var signal = number < 0 ? "-" : "";
     var integer = parseInt(n = Math.abs(+number || 0).toFixed(places)) + "";
     var remaining = (remaining = integer.length) > 3 ? remaining % 3 : 0;
@@ -113,6 +113,6 @@ Number._formatCurrency = function(money, currency, useSymbol) {
     symbol = symbol || [currency, 1];
     var position = symbol[1];
     var symbol = symbol[0];
-    money = position == 1 ? money + " " + symbol : symbol + " " + money;
+    money = position === 1 ? money + " " + symbol : symbol + " " + money;
     return money;
 };

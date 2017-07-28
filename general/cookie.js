@@ -77,7 +77,7 @@ Cookie.prototype.load = function() {
         var cookieName = cookieSplitted[0].replace(/^\s+|\s+$/g, "");
 
         // in case it's the same cookie name
-        if (cookieName == this.name) {
+        if (cookieName === this.name) {
             // sets the cookie found flag
             cookieFound = true;
 

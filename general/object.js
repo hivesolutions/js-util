@@ -43,7 +43,7 @@ _Object.get = function(object, key, defaultValue) {
     var value = object[key];
 
     // returns the valid value
-    return value != undefined ? value : defaultValue;
+    return value !== null && value !== undefined ? value : defaultValue;
 }
 
 /**

@@ -112,7 +112,7 @@ StringBuffer.prototype.removeLastAppend = function() {
  * @return {Boolean} If the string buffer is empty.
  */
 StringBuffer.prototype.empty = function() {
-    return this.buffer.length == 0;
+    return this.buffer.length === 0;
 }
 
 /**

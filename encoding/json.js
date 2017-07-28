@@ -95,7 +95,7 @@ Json.toString = function(object) {
 
     // in case the object is not of type object
     // or in case it is null
-    if (objectType !== "object" || object === null) {
+    if (objectType !== "object" || object === null || object === undefined) {
         // simple data type
         if (objectType === "string") {
             object = Json.escapeString(object);
@@ -128,8 +128,8 @@ Json.toString = function(object) {
             if (elementValueType === "string") {
                 elementValue = Json.escapeString(elementValue);
             }
-            // in case the element is of type object or null
-            else if (elementValueType === "object" && elementValue !== null) {
+            // in case the element is of type object and not null
+            else if (elementValueType === "object" && elementValue !== null && elementValue !== undefined) {
                 // retrieves the element value as the json
                 // value of the element
                 elementValue = Json.toString(elementValue);

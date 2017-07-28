@@ -223,10 +223,9 @@ TemplateEngine.prototype.process = function(template, options) {
             current = this.getc();
         }
 
-        // in case the end of file has been found, or
-        // the file size is zero (breaks)
+        // in case the end of file has been found, or the file
+        // size is zero, breaks the cycle (end of parsing)
         if (current === null || current === undefined) {
-            // breaks the cycle (end of parsing)
             break;
         }
 

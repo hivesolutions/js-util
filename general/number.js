@@ -40,7 +40,7 @@ Number.SYMBOLS = {
     "MXN": ["$", -1],
     "DKK": ["kr.", 1],
     "SEK": ["kr.", 1],
-    "PLN": ["zl", 1]
+    "PLN": ["zł", 1]
 };
 
 Number.DECIMAL_PLACES = {

@@ -64,84 +64,84 @@ BrowserDetect.searchVersion = function(dataString) {
 
 BrowserDetect.DATA_BROWSER = [{
     string: navigator.userAgent,
-    subString: "Edge",
     identity: "Edge",
+    subString: "Edge",
     versionSearch: "Edge"
 }, {
     string: navigator.userAgent,
-    subString: "Chrome",
-    identity: "Chrome"
+    identity: "Chrome",
+    subString: "Chrome"
 }, {
     string: navigator.userAgent,
+    identity: "OmniWeb",
     subString: "OmniWeb",
-    versionSearch: "OmniWeb/",
-    identity: "OmniWeb"
+    versionSearch: "OmniWeb/"
 }, {
     string: navigator.vendor,
-    subString: "Apple",
     identity: "Safari",
+    subString: "Apple",
     versionSearch: "Version"
 }, {
     prop: window.opera,
     identity: "Opera"
 }, {
     string: navigator.vendor,
-    subString: "iCab",
-    identity: "iCab"
+    identity: "iCab",
+    subString: "iCab"
 }, {
     string: navigator.vendor,
-    subString: "KDE",
-    identity: "Konqueror"
+    identity: "Konqueror",
+    subString: "KDE"
 }, {
     string: navigator.userAgent,
-    subString: "Firefox",
-    identity: "Firefox"
+    identity: "Firefox",
+    subString: "Firefox"
 }, {
     string: navigator.vendor,
-    subString: "Camino",
-    identity: "Camino"
+    identity: "Camino",
+    subString: "Camino"
 }, {
     string: navigator.userAgent,
-    subString: "Netscape",
-    identity: "Netscape"
+    identity: "Netscape",
+    subString: "Netscape"
 }, {
     string: navigator.userAgent,
-    subString: "MSIE",
     identity: "Explorer",
+    subString: "MSIE",
     versionSearch: "MSIE"
 }, {
     string: navigator.userAgent,
-    subString: "Trident",
     identity: "Explorer",
+    subString: "Trident",
     versionSearch: "rv"
 }, {
     string: navigator.userAgent,
-    subString: "Gecko",
     identity: "Mozilla",
+    subString: "Gecko",
     versionSearch: "rv"
 }, {
     string: navigator.userAgent,
-    subString: "Mozilla",
     identity: "Netscape",
+    subString: "Mozilla",
     versionSearch: "Mozilla"
 }];
 
 BrowserDetect.DATA_OS = [{
     string: navigator.platform,
-    subString: "Win",
-    identity: "Windows"
+    identity: "Windows",
+    subString: "Win"
 }, {
     string: navigator.platform,
-    subString: "Mac",
-    identity: "Mac"
+    identity: "Mac",
+    subString: "Mac"
 }, {
     string: navigator.userAgent,
-    subString: "iPhone",
-    identity: "iPhone/iPod"
+    identity: "iPhone/iPod",
+    subString: "iPhone"
 }, {
     string: navigator.platform,
-    subString: "Linux",
-    identity: "Linux"
+    identity: "Linux",
+    subString: "Linux"
 }];
 
 // initializes the browser detection system

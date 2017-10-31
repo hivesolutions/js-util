@@ -52,11 +52,13 @@ BrowserDetect.searchVersion = function(dataString) {
     var index = dataString.indexOf(BrowserDetect.versionSearchString);
 
     // in case the version search string is not found
+    // returns immediately, no version could be detected
     if (index === -1) {
-        // returns immediately
         return;
     }
 
+    // returns the float version of the discovered number
+    // string in the "middle" of the data string
     return parseFloat(dataString.substring(index + BrowserDetect.versionSearchString.length + 1));
 };
 

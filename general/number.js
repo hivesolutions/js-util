@@ -115,7 +115,7 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     money += remaining ? integer.substr(0, remaining) + thousands : "";
     money += integer.substr(remaining).replace(/(\d{3})(?=\d)/g,
         "$1" + thousands);
-    money += places ? separator + Math.abs(number - integer).toFixed(places).slice(2) : "";
+    money += places ? separator + Math.abs(Math.abs(number) - integer).toFixed(places).slice(2) : "";
     money = currency ? Number._formatCurrency(money, currency, useSymbol) : money;
     return money;
 };

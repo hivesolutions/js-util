@@ -12,7 +12,9 @@
     },
     "keywords": [
         "util",
-        "js"
+        "js",
+        "base64",
+        "logging"
     ],
     "author": "Hive Solutions",
     "license": "Apache-2.0",

@@ -1,7 +1,7 @@
 console.info(Number);
 
 var assert = require("assert");
-var base = require("../general/number");
+var base = require("../lib/general/number");
 
 describe("Number", function() {
     describe("#formatMoney()", function() {

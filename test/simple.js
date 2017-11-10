@@ -1,5 +1,3 @@
-console.info(Number);
-
 var assert = require("assert");
 var base = require("../lib/general/number");
 

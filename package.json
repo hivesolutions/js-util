@@ -1,0 +1,25 @@
+{
+    "name": "hive-js-util",
+    "version": "0.1.1",
+    "description": "Simple set of utilities for Javascript",
+    "main": "app.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": [
+        "headless",
+        "pdf"
+    ],
+    "author": "Hive Solutions",
+    "license": "Apache-2.0",
+    "devDependencies": {
+        "mocha": "^4.0.1",
+        "eslint": "^3.19",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-import": "^2.7.0",
+        "eslint-plugin-node": "^5.2.0",
+        "eslint-plugin-promise": "^3.5.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "eslint-plugin-mocha": "^4.11.0"
+    }
+}

@@ -23,7 +23,7 @@
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var _Object = _Object || {};
+_Object = _Object || {};
 
 /**
  * Retrieves an element from the given object for the given key, in case the

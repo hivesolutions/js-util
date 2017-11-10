@@ -23,7 +23,7 @@
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Date = Date || {};
+Date = Date || {};
 
 /**
  * Parses the given date string (without utc offset) retrieving an utc timestamp

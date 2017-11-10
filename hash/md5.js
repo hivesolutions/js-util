@@ -24,7 +24,7 @@
 // __license__   = Apache License, Version 2.0
 // __credits__   = Joseph Myers <e_mayilme@hotmail.com>
 
-var Md5 = Md5 || {};
+Md5 = Md5 || {};
 
 /**
  * The list of hexadecimal characters available and indexed by position in the

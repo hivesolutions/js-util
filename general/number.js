@@ -23,7 +23,7 @@
 // __copyright__ = Copyright (c) 2008-2017 Hive Solutions Lda.
 // __license__   = Apache License, Version 2.0
 
-var Number = Number || {};
+Number = Number || {};
 
 Number.SYMBOLS = {
     "EUR": ["€", 1],
@@ -115,7 +115,7 @@ Number.prototype.formatMoney = function(places, separator, thousands, currency, 
     money += remaining ? integer.substr(0, remaining) + thousands : "";
     money += integer.substr(remaining).replace(/(\d{3})(?=\d)/g,
         "$1" + thousands);
-    money += places ? separator + Math.abs(number - integer).toFixed(places).slice(2) : "";
+    money += places ? separator + Math.abs(Math.abs(number) - integer).toFixed(places).slice(2) : "";
     money = currency ? Number._formatCurrency(money, currency, useSymbol) : money;
     return money;
 };

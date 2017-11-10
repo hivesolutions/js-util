@@ -2,6 +2,7 @@
     "name": "hive-js-util",
     "version": "0.1.2",
     "description": "Simple set of utilities for Javascript",
+    "main": "lib/main.js",
     "scripts": {
         "test": "mocha"
     },

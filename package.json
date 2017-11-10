@@ -11,8 +11,8 @@
         "url": "git+https://github.com/hivesolutions/js_util.git"
     },
     "keywords": [
-        "headless",
-        "pdf"
+        "util",
+        "js"
     ],
     "author": "Hive Solutions",
     "license": "Apache-2.0",

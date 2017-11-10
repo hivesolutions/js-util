@@ -2,7 +2,6 @@
     "name": "hive-js-util",
     "version": "0.1.1",
     "description": "Simple set of utilities for Javascript",
-    "main": "app.js",
     "scripts": {
         "test": "mocha"
     },
@@ -16,6 +15,23 @@
     ],
     "author": "Hive Solutions",
     "license": "Apache-2.0",
+    "files": [
+        "lib/encoding/base64.js",
+        "lib/encoding/json.js",
+        "lib/functional/select.js",
+        "lib/general/array.js",
+        "lib/general/browser.js",
+        "lib/general/class_reference.js",
+        "lib/general/cookie.js",
+        "lib/general/date.js",
+        "lib/general/math.js",
+        "lib/general/mobile.js",
+        "lib/general/namespace.js",
+        "lib/general/number.js",
+        "lib/general/object.js",
+        "lib/general/root.js",
+        "lib/general/stack_trace.js"
+    ],
     "devDependencies": {
         "mocha": "^4.0.1",
         "eslint": "^3.19",

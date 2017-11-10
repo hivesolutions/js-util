@@ -7,4 +7,9 @@ describe("Base64", function() {
             assert.equal(Base64.encode("hello world"), "aGVsbG8gd29ybGQ=");
         });
     });
+    describe("#decode()", function() {
+        it("should do simple things", () => {
+            assert.equal(Base64.decode("aGVsbG8gd29ybGQ="), "hello world");
+        });
+    });
 });

@@ -19,7 +19,7 @@
     "author": "Hive Solutions",
     "license": "Apache-2.0",
     "files": [
-        "lib/main.js",
+        "lib/index.js",
         "lib/encoding/base64.js",
         "lib/encoding/json.js",
         "lib/functional/select.js",

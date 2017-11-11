@@ -1,10 +1,10 @@
 var assert = require("assert");
-var json = require("../lib/encoding/json");
+var util = require("../");
 
 describe("Json", function() {
     describe("#toString()", function() {
         it("should do simple things", () => {
-            assert.equal(json.Json.toString({
+            assert.equal(util.Json.toString({
                 hello: "world"
             }), "{\"hello\":\"world\"}");
         });

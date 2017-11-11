@@ -2,7 +2,7 @@
     "name": "hive-js-util",
     "version": "0.1.9",
     "description": "Simple set of utilities for Javascript",
-    "main": "lib/main.js",
+    "main": "index.js",
     "scripts": {
         "test": "mocha"
     },
@@ -19,6 +19,7 @@
     "author": "Hive Solutions",
     "license": "Apache-2.0",
     "files": [
+        "lib/main.js",
         "lib/encoding/base64.js",
         "lib/encoding/json.js",
         "lib/functional/select.js",

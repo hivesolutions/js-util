@@ -1,6 +1,6 @@
 {
     "name": "hive-js-util",
-    "version": "0.1.9",
+    "version": "0.1.10",
     "description": "Simple set of utilities for Javascript",
     "main": "index.js",
     "scripts": {

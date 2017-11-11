@@ -1,5 +1,5 @@
 var assert = require("assert");
-var util = require("../");
+require("../");
 
 describe("Number", function() {
     describe("#formatMoney()", function() {

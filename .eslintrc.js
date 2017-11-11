@@ -10,6 +10,7 @@ module.exports = {
         "mocha/no-exclusive-tests": "error"
     },
     "env": {
+        "browser": true,
         "jasmine": true
     }
 };

@@ -12,7 +12,7 @@ var paths = {
     test: "test/**/*.js"
 };
 
-gulp.task("build", function(cb) {
+gulp.task("build", function() {
     pump([
         gulp.src(paths.scripts),
         uglify({
@@ -26,14 +26,16 @@ gulp.task("build", function(cb) {
         }),
         gulp.dest("./dist"),
         count("## assets copied")
-    ], cb);
+    ]);
 });
 
 gulp.task("test", function() {
-    gulp.src(paths.test)
-        .pipe(mocha({
+    pump([
+        gulp.src(paths.test),
+        mocha({
             reporter: "spec"
-        }));
+        })
+    ]);
 });
 
 gulp.task("default", ["build"]);

@@ -1,11 +1,12 @@
 const gulp = require("gulp");
 const size = require("gulp-size");
-const uglify = require("gulp-uglify");
+const mocha = require("gulp-mocha");
 const replace = require("gulp-replace");
 const _package = require("./package.json");
 
 var paths = {
-    scripts: "lib/**/*.js"
+    scripts: "lib/**/*.js",
+    test: "test/**/*.js"
 };
 
 gulp.task("build", function() {
@@ -16,6 +17,11 @@ gulp.task("build", function() {
             gzip: true
         }))
         .pipe(gulp.dest("./dist"));
+});
+
+gulp.task("test", function() {
+    gulp.src(paths.test)
+        .pipe(mocha({reporter: "spec"}));
 });
 
 gulp.task("default", ["build"]);

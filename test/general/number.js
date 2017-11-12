@@ -1,5 +1,5 @@
 var assert = require("assert");
-require("../");
+require("../../");
 
 describe("Number", function() {
     describe("#formatMoney()", function() {

@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "build": "gulp",
-        "test": "mocha"
+        "test": "gulp test"
     },
     "repository": {
         "type": "git",
@@ -59,8 +59,7 @@
         "mocha": "^4.0.1",
         "gulp": "^3.9.1",
         "gulp-size": "^2.1.0",
-        "gulp-concat": "^2.6.1",
-        "gulp-uglify": "^3.0.0",
+        "gulp-mocha": "^4.3.1",
         "gulp-replace": "^0.6.1",
         "eslint": "^3.19",
         "eslint-config-standard": "^10.2.1",

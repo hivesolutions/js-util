@@ -1,5 +1,5 @@
 var assert = require("assert");
-require("../");
+require("../../");
 
 describe("String", function() {
     describe("#capitalize()", function() {

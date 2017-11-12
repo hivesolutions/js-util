@@ -1,5 +1,5 @@
 var assert = require("assert");
-var util = require("../");
+var util = require("../../");
 
 describe("Json", function() {
     describe("#toString()", function() {

@@ -1,5 +1,6 @@
 const gulp = require("gulp");
 const size = require("gulp-size");
+const count = require("gulp-count");
 const mocha = require("gulp-mocha");
 const replace = require("gulp-replace");
 const _package = require("./package.json");
@@ -16,7 +17,8 @@ gulp.task("build", function() {
         .pipe(size({
             gzip: true
         }))
-        .pipe(gulp.dest("./dist"));
+        .pipe(gulp.dest("./dist"))
+        .pipe(count("## assets copied"));
 });
 
 gulp.task("test", function() {

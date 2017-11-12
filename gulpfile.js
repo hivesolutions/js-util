@@ -2,20 +2,22 @@ const gulp = require("gulp");
 const size = require("gulp-size");
 const count = require("gulp-count");
 const mocha = require("gulp-mocha");
-const uglify = require("gulp-uglifyes");
+const cssnano = require("gulp-cssnano");
+const uglifyes = require("gulp-uglifyes");
 const replace = require("gulp-replace");
 const _package = require("./package.json");
 const pump = require("pump");
 
 var paths = {
     scripts: "lib/**/*.js",
+    css: "lib/**/*.css",
     test: "test/**/*.js"
 };
 
-gulp.task("build", function() {
+gulp.task("build-js", function() {
     pump([
         gulp.src(paths.scripts),
-        uglify({
+        uglifyes({
             mangle: false,
             ecma: 6
         }),
@@ -25,7 +27,20 @@ gulp.task("build", function() {
             gzip: true
         }),
         gulp.dest("./dist"),
-        count("## assets copied")
+        count("## js files copied")
+    ]);
+});
+
+gulp.task("build-css", function() {
+    pump([
+        gulp.src(paths.css),
+        cssnano(),
+        size(),
+        size({
+            gzip: true
+        }),
+        gulp.dest("./dist"),
+        count("## css files copied")
     ]);
 });
 
@@ -38,4 +53,4 @@ gulp.task("test", function() {
     ]);
 });
 
-gulp.task("default", ["build"]);
+gulp.task("default", ["build-js", "build-css"]);

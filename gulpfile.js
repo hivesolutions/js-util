@@ -6,7 +6,6 @@ const cssnano = require("gulp-cssnano");
 const uglifyes = require("gulp-uglifyes");
 const replace = require("gulp-replace");
 const _package = require("./package.json");
-const pump = require("pump");
 
 var paths = {
     scripts: "lib/**/*.js",
@@ -15,7 +14,7 @@ var paths = {
 };
 
 gulp.task("build-js", function() {
-    gulp.src(paths.scripts)
+    return gulp.src(paths.scripts)
         .pipe(uglifyes({
             mangle: false,
             ecma: 6
@@ -30,7 +29,7 @@ gulp.task("build-js", function() {
 });
 
 gulp.task("build-css", function() {
-    gulp.src(paths.css)
+    return gulp.src(paths.css)
         .pipe(cssnano())
         .pipe(size())
         .pipe(size({
@@ -41,7 +40,7 @@ gulp.task("build-css", function() {
 });
 
 gulp.task("test", function() {
-    gulp.src(paths.test)
+    return gulp.src(paths.test)
         .pipe(mocha({
             reporter: "spec"
         }));

@@ -15,42 +15,36 @@ var paths = {
 };
 
 gulp.task("build-js", function() {
-    pump([
-        gulp.src(paths.scripts),
-        uglifyes({
+    gulp.src(paths.scripts)
+        .pipe(uglifyes({
             mangle: false,
             ecma: 6
-        }),
-        replace("__VERSION__", _package.version),
-        size(),
-        size({
+        }))
+        .pipe(replace("__VERSION__", _package.version))
+        .pipe(size())
+        .pipe(size({
             gzip: true
-        }),
-        gulp.dest("./dist"),
-        count("## js files copied")
-    ]);
+        }))
+        .pipe(gulp.dest("./dist"))
+        .pipe(count("## js files copied"));
 });
 
 gulp.task("build-css", function() {
-    pump([
-        gulp.src(paths.css),
-        cssnano(),
-        size(),
-        size({
+    gulp.src(paths.css)
+        .pipe(cssnano())
+        .pipe(size())
+        .pipe(size({
             gzip: true
-        }),
-        gulp.dest("./dist"),
-        count("## css files copied")
-    ]);
+        }))
+        .pipe(gulp.dest("./dist"))
+        .pipe(count("## css files copied"));
 });
 
 gulp.task("test", function() {
-    pump([
-        gulp.src(paths.test),
-        mocha({
+    gulp.src(paths.test)
+        .pipe(mocha({
             reporter: "spec"
-        })
-    ]);
+        }));
 });
 
 gulp.task("default", ["build-js", "build-css"]);

@@ -13,7 +13,7 @@ var paths = {
     test: "test/**/*.js"
 };
 
-gulp.task("build-js", function() {
+gulp.task("build-js", () => {
     return gulp.src(paths.scripts)
         .pipe(uglifyes({
             mangle: false,
@@ -28,7 +28,7 @@ gulp.task("build-js", function() {
         .pipe(count("## js files copied"));
 });
 
-gulp.task("build-css", function() {
+gulp.task("build-css", () => {
     return gulp.src(paths.css)
         .pipe(cssnano())
         .pipe(size())
@@ -39,7 +39,7 @@ gulp.task("build-css", function() {
         .pipe(count("## css files copied"));
 });
 
-gulp.task("test", function() {
+gulp.task("test", () => {
     return gulp.src(paths.test)
         .pipe(mocha({
             reporter: "spec"

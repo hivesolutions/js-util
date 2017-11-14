@@ -20,6 +20,10 @@
     ],
     "author": "Hive Solutions",
     "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/hivesolutions/js_util/issues"
+    },
+    "homepage": "https://github.com/hivesolutions/js_util#readme",
     "files": [
         "gulpfile.js",
         "lib/index.js",

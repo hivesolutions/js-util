@@ -20,6 +20,7 @@
     "author": "Hive Solutions",
     "license": "Apache-2.0",
     "files": [
+        ".gulpfile.js",
         "lib/index.js",
         "lib/encoding/base64.js",
         "lib/encoding/index.js",
@@ -53,7 +54,13 @@
         "lib/string/string.js",
         "lib/string/template.js",
         "lib/ui/index.js",
-        "lib/ui/canvas.js"
+        "lib/ui/canvas.js",
+        "test/encoding/base64.js",
+        "test/encoding/json.js",
+        "test/general/number.js",
+        "test/general/root.js",
+        "test/hash/md5.js",
+        "test/string/string.js"
     ],
     "devDependencies": {
         "mocha": "^4.0.1",

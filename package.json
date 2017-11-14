@@ -20,7 +20,7 @@
     "author": "Hive Solutions",
     "license": "Apache-2.0",
     "files": [
-        ".gulpfile.js",
+        "gulpfile.js",
         "lib/index.js",
         "lib/encoding/base64.js",
         "lib/encoding/index.js",

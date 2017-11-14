@@ -4,6 +4,7 @@
     "description": "Simple set of utilities for Javascript",
     "main": "index.js",
     "scripts": {
+        "gulp": "gulp",
         "build": "gulp",
         "test": "gulp test"
     },

@@ -39,6 +39,14 @@ gulp.task("build-css", () => {
         .pipe(count("## css files copied"));
 });
 
+gulp.task("watch-js", function() {
+    gulp.watch(paths.scripts, ["build-js"]);
+});
+
+gulp.task("watch-css", function() {
+    gulp.watch(paths.css, ["build-css"]);
+});
+
 gulp.task("test", () => {
     return gulp.src(paths.test)
         .pipe(mocha({
@@ -46,4 +54,8 @@ gulp.task("test", () => {
         }));
 });
 
-gulp.task("default", ["build-js", "build-css"]);
+gulp.task("watch", ["build", "watch-js", "watch-css"]);
+
+gulp.task("build", ["build-js", "build-css"]);
+
+gulp.task("default", ["build"]);

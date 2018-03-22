@@ -5,6 +5,7 @@ const mocha = require("gulp-mocha");
 const cssnano = require("gulp-cssnano");
 const uglifyes = require("gulp-uglifyes");
 const replace = require("gulp-replace");
+const _watch = require("gulp-watch");
 const _package = require("./package.json");
 
 var paths = {

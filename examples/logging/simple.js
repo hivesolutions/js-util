@@ -9,6 +9,8 @@ if (util.Logging.ConsolaHandler.isReady()) {
     logger.addHandler(new util.Logging.ConsolaHandler());
 }
 
+logger.setFormatter(new util.Logging.SimpleFormatter());
+
 logger.debug("Debug Message");
 logger.info("Info Message");
 logger.error("Error Message");

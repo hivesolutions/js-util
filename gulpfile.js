@@ -17,7 +17,7 @@ gulp.task("build-js", () => {
     return gulp.src(paths.scripts)
         .pipe(uglifyes({
             mangle: false,
-            ecma: 6
+            ecma: 5
         }))
         .pipe(replace("__VERSION__", _package.version))
         .pipe(size())

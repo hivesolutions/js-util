@@ -1,4 +1,4 @@
-# [JS Util](http://js_util.hive.pt)
+# [JS Util](http://js-util.hive.pt)
 
 Random Javascript utility scripts.
 

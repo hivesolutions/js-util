@@ -2,6 +2,7 @@ const gulp = require("gulp");
 const size = require("gulp-size");
 const count = require("gulp-count");
 const mocha = require("gulp-mocha");
+const jsdoc = require("gulp-jsdoc3");
 const cssnano = require("gulp-cssnano");
 const uglifyes = require("gulp-uglifyes");
 const replace = require("gulp-replace");
@@ -37,6 +38,11 @@ gulp.task("build-css", () => {
         }))
         .pipe(gulp.dest("dist"))
         .pipe(count("## css files copied"));
+});
+
+gulp.task("docs", (cb) => {
+    gulp.src(["README.md", paths.docs], {read: false})
+        .pipe(jsdoc(cb));
 });
 
 gulp.task("watch-js", function() {

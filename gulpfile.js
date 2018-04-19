@@ -11,6 +11,7 @@ const _package = require("./package.json");
 var paths = {
     scripts: "lib/**/*.js",
     css: "lib/**/*.css",
+    docs: "lib/**/*.js",
     test: "test/**/*.js"
 };
 
@@ -41,7 +42,9 @@ gulp.task("build-css", () => {
 });
 
 gulp.task("docs", (cb) => {
-    gulp.src(["README.md", paths.docs], {read: false})
+    gulp.src(["README.md", paths.docs], {
+            read: false
+        })
         .pipe(jsdoc(cb));
 });
 

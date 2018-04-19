@@ -17,7 +17,7 @@ ENV BASE_PATH /docs/gen
 ADD package.json /
 ADD gulpfile.js /
 ADD README.md /
-ADD src /src
+ADD lib /lib
 
 RUN apk update && apk add nodejs
 RUN pip3 install --upgrade netius

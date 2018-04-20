@@ -2,57 +2,58 @@
     "name": "hive-js-util",
     "version": "0.1.15",
     "description": "Simple set of utilities for Javascript",
-    "main": "index.js",
-    "scripts": {
-        "gulp": "gulp",
-        "build": "gulp build",
-        "docs": "gulp docs",
-        "watch": "gulp watch",
-        "test": "gulp test",
-        "upgrade": "ncu -au"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/hivesolutions/js_util.git"
-    },
     "keywords": [
-        "util",
-        "js",
         "base64",
-        "logging"
+        "js",
+        "logging",
+        "util"
     ],
-    "author": "Hive Solutions",
-    "license": "Apache-2.0",
+    "homepage": "https://github.com/hivesolutions/js_util#readme",
     "bugs": {
         "url": "https://github.com/hivesolutions/js_util/issues"
     },
-    "homepage": "https://github.com/hivesolutions/js_util#readme",
+    "license": "Apache-2.0",
+    "author": "Hive Solutions",
     "files": [
         "gulpfile.js",
         "lib/**/*.js",
         "lib/**/*.css",
         "test/**/*.js"
     ],
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hivesolutions/js_util.git"
+    },
+    "scripts": {
+        "build": "gulp build",
+        "docs": "gulp docs",
+        "gulp": "gulp",
+        "test": "gulp test",
+        "upgrade": "npx sort-package-json && ncu -au",
+        "watch": "gulp watch"
+    },
     "devDependencies": {
         "eslint": "^4.19.1",
         "eslint-config-standard": "^11.0.0",
         "eslint-plugin-import": "^2.11.0",
+        "eslint-plugin-mocha": "^5.0.0",
         "eslint-plugin-node": "^6.0.1",
         "eslint-plugin-promise": "^3.7.0",
         "eslint-plugin-standard": "^3.0.1",
-        "eslint-plugin-mocha": "^5.0.0",
+        "gulp": "^3.9.1",
+        "gulp-cli": "^2.0.1",
+        "gulp-count": "^1.0.0",
+        "gulp-cssnano": "^2.1.3",
+        "gulp-jsdoc3": "^2.0.0",
+        "gulp-mocha": "^5.0.0",
+        "gulp-replace": "^0.6.1",
+        "gulp-size": "^3.0.0",
+        "gulp-uglifyes": "^0.1.3",
+        "gulp-watch": "^5.0.0",
         "mocha": "^5.1.1",
         "mocha-cli": "^1.0.1",
         "npm-check-updates": "^2.14.1",
-        "gulp": "^3.9.1",
-        "gulp-cli": "^2.0.1",
-        "gulp-size": "^3.0.0",
-        "gulp-count": "^1.0.0",
-        "gulp-jsdoc3": "^2.0.0",
-        "gulp-mocha": "^5.0.0",
-        "gulp-cssnano": "^2.1.3",
-        "gulp-uglifyes": "^0.1.3",
-        "gulp-replace": "^0.6.1",
-        "gulp-watch": "^5.0.0"
+        "sort-package-json": "^1.12.0"
     }
 }

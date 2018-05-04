@@ -1,5 +1,5 @@
-var assert = require("assert");
-var util = require("../../");
+const assert = require("assert");
+const util = require("../../");
 
 describe("Md5", function() {
     describe("#digest()", function() {

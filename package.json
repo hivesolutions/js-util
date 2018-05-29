@@ -12,6 +12,10 @@
     "bugs": {
         "url": "https://github.com/hivesolutions/js_util/issues"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hivesolutions/js_util.git"
+    },
     "license": "Apache-2.0",
     "author": "Hive Solutions",
     "files": [
@@ -22,10 +26,6 @@
         "test/**/*.js"
     ],
     "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/hivesolutions/js_util.git"
-    },
     "scripts": {
         "build": "gulp build",
         "docs": "gulp docs",
@@ -37,24 +37,24 @@
     "devDependencies": {
         "eslint": "^4.19.1",
         "eslint-config-standard": "^11.0.0",
-        "eslint-plugin-import": "^2.11.0",
+        "eslint-plugin-import": "^2.12.0",
         "eslint-plugin-mocha": "^5.0.0",
         "eslint-plugin-node": "^6.0.1",
-        "eslint-plugin-promise": "^3.7.0",
+        "eslint-plugin-promise": "^3.8.0",
         "eslint-plugin-standard": "^3.1.0",
         "gulp": "^3.9.1",
         "gulp-cli": "^2.0.1",
         "gulp-count": "^1.0.0",
         "gulp-cssnano": "^2.1.3",
         "gulp-jsdoc3": "^2.0.0",
-        "gulp-mocha": "^5.0.0",
-        "gulp-replace": "^0.6.1",
+        "gulp-mocha": "^6.0.0",
+        "gulp-replace": "^1.0.0",
         "gulp-size": "^3.0.0",
         "gulp-uglifyes": "^0.1.3",
         "gulp-watch": "^5.0.0",
-        "mocha": "^5.1.1",
+        "mocha": "^5.2.0",
         "mocha-cli": "^1.0.1",
         "npm-check-updates": "^2.14.2",
-        "sort-package-json": "^1.13.0"
+        "sort-package-json": "^1.15.0"
     }
 }

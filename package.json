@@ -15,6 +15,7 @@
     "license": "Apache-2.0",
     "author": "Hive Solutions",
     "files": [
+        "index.js",
         "gulpfile.js",
         "lib/**/*.js",
         "lib/**/*.css",

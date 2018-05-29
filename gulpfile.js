@@ -43,16 +43,15 @@ gulp.task("build-css", () => {
 
 gulp.task("docs", (cb) => {
     gulp.src(["README.md", paths.docs], {
-            read: false
-        })
-        .pipe(jsdoc(cb));
+        read: false
+    }).pipe(jsdoc(cb));
 });
 
-gulp.task("watch-js", function() {
+gulp.task("watch-js", () => {
     gulp.watch(paths.scripts, ["build-js"]);
 });
 
-gulp.task("watch-css", function() {
+gulp.task("watch-css", () => {
     gulp.watch(paths.css, ["build-css"]);
 });
 

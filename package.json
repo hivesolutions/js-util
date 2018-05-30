@@ -1,6 +1,6 @@
 {
     "name": "hive-js-util",
-    "version": "0.1.16",
+    "version": "0.1.17",
     "description": "Simple set of utilities for Javascript",
     "keywords": [
         "base64",

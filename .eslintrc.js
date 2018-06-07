@@ -10,7 +10,11 @@ module.exports = {
         "space-before-function-paren": ["error", "never"],
         "linebreak-style": ["error", "windows"],
         "mocha/no-exclusive-tests": "error",
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "brace-style": "off",
+        "operator-linebreak": "off",
+        "standard/no-callback-literal": "off",
+        "standard/computed-property-even-spacing": "off"
     },
     "env": {
         "browser": true,

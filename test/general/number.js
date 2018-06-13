@@ -15,5 +15,10 @@ describe("Number", function() {
             assert.equal(12.23.formatMoney(2, ".", ",", "USD", true), "$ 12.23");
             assert.equal(12.23.formatMoney(1, ",", ".", "USD", true), "$ 12,2");
         });
+        it("should do currency for negative numbers", () => {
+            assert.equal((-12.23).formatMoney(2, ".", ",", "USD"), "-12.23 USD");
+            assert.equal((-12.23).formatMoney(2, ".", ",", "USD", true), "$ -12.23");
+            assert.equal((-12.23).formatMoney(1, ",", ".", "USD", true), "$ -12,2");
+        });
     });
 });

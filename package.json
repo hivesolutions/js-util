@@ -1,6 +1,6 @@
 {
     "name": "hive-js-util",
-    "version": "0.1.18",
+    "version": "0.1.19",
     "description": "Simple set of utilities for Javascript",
     "keywords": [
         "base64",
@@ -30,22 +30,19 @@
         "build": "gulp build",
         "docs": "gulp docs",
         "gulp": "gulp",
+        "lint": "gulp lint",
         "test": "gulp test",
         "upgrade": "npx sort-package-json && ncu -au",
         "watch": "gulp watch"
     },
     "devDependencies": {
         "eslint": "^4.19.1",
-        "eslint-config-standard": "^11.0.0",
-        "eslint-plugin-import": "^2.12.0",
-        "eslint-plugin-mocha": "^5.0.0",
-        "eslint-plugin-node": "^6.0.1",
-        "eslint-plugin-promise": "^3.8.0",
-        "eslint-plugin-standard": "^3.1.0",
+        "eslint-config-hive": "^0.1.1",
         "gulp": "^3.9.1",
         "gulp-cli": "^2.0.1",
         "gulp-count": "^1.0.0",
         "gulp-cssnano": "^2.1.3",
+        "gulp-eslint": "^4.0.2",
         "gulp-jsdoc3": "^2.0.0",
         "gulp-mocha": "^6.0.0",
         "gulp-replace": "^1.0.0",

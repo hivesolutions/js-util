@@ -3,6 +3,7 @@ const size = require("gulp-size");
 const count = require("gulp-count");
 const mocha = require("gulp-mocha");
 const jsdoc = require("gulp-jsdoc3");
+const eslint = require("gulp-eslint");
 const cssnano = require("gulp-cssnano");
 const uglifyes = require("gulp-uglifyes");
 const replace = require("gulp-replace");
@@ -53,6 +54,13 @@ gulp.task("watch-js", () => {
 
 gulp.task("watch-css", () => {
     gulp.watch(paths.css, ["build-css"]);
+});
+
+gulp.task("lint", () => {
+    return gulp.src(paths.scripts)
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task("test", () => {

@@ -17,32 +17,40 @@ var paths = {
 };
 
 gulp.task("build-js", () => {
-    return gulp.src(paths.scripts)
-        .pipe(uglifyes({
-            mangle: false,
-            ecma: 5
-        }))
+    return gulp
+        .src(paths.scripts)
+        .pipe(
+            uglifyes({
+                mangle: false,
+                ecma: 5
+            })
+        )
         .pipe(replace("__VERSION__", _package.version))
         .pipe(size())
-        .pipe(size({
-            gzip: true
-        }))
+        .pipe(
+            size({
+                gzip: true
+            })
+        )
         .pipe(gulp.dest("dist"))
         .pipe(count("## js files copied"));
 });
 
 gulp.task("build-css", () => {
-    return gulp.src(paths.css)
+    return gulp
+        .src(paths.css)
         .pipe(cssnano())
         .pipe(size())
-        .pipe(size({
-            gzip: true
-        }))
+        .pipe(
+            size({
+                gzip: true
+            })
+        )
         .pipe(gulp.dest("dist"))
         .pipe(count("## css files copied"));
 });
 
-gulp.task("docs", (cb) => {
+gulp.task("docs", cb => {
     gulp.src(["README.md", paths.docs], {
         read: false
     }).pipe(jsdoc(cb));
@@ -57,17 +65,19 @@ gulp.task("watch-css", () => {
 });
 
 gulp.task("lint", () => {
-    return gulp.src(paths.scripts)
+    return gulp
+        .src(paths.scripts)
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 });
 
 gulp.task("test", () => {
-    return gulp.src(paths.test)
-        .pipe(mocha({
+    return gulp.src(paths.test).pipe(
+        mocha({
             reporter: "spec"
-        }));
+        })
+    );
 });
 
 gulp.task("watch", ["build", "watch-js", "watch-css"]);

@@ -32,7 +32,7 @@
         "gulp": "gulp",
         "lint": "gulp lint",
         "test": "gulp test",
-        "prettier": "prettier ./lib/**/*.js ./test/**/*.js --write",
+        "prettier": "prettier './lib/**/*.js' './test/**/*.js' --write",
         "upgrade": "npx sort-package-json && ncu -au",
         "watch": "gulp watch"
     },

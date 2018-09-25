@@ -4,7 +4,7 @@ const util = require("../../");
 describe("Json", function() {
     describe("#toString()", function() {
         it("should dump an object", () => {
-            assert.equal(
+            assert.strictEqual(
                 util.Json.toString({
                     hello: "world"
                 }),

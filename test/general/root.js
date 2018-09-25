@@ -4,8 +4,8 @@ require("../../");
 describe("Object", function() {
     describe("#isEmpty()", function() {
         it("should check simple static objects", () => {
-            assert.equal(Object.isEmpty({}), true);
-            assert.equal(
+            assert.strictEqual(Object.isEmpty({}), true);
+            assert.strictEqual(
                 Object.isEmpty({
                     hello: "world"
                 }),

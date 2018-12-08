@@ -31,8 +31,8 @@
         "docs": "gulp docs",
         "gulp": "gulp",
         "lint": "gulp lint",
-        "test": "gulp test",
         "prettier": "prettier \"./*.{js,json}\" \"./!(dist)/**/*.{js,json}\" --write",
+        "test": "gulp test",
         "upgrade": "npx sort-package-json && ncu -au",
         "watch": "gulp watch"
     },

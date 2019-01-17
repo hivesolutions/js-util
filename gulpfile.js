@@ -9,7 +9,7 @@ const uglifyes = require("gulp-uglifyes");
 const replace = require("gulp-replace");
 const _package = require("./package.json");
 
-var paths = {
+const paths = {
     scripts: "lib/**/*.js",
     css: "lib/**/*.css",
     docs: "lib/**/*.js",

@@ -88,6 +88,6 @@ gulp.task("test", () => {
 
 gulp.task("build", gulp.series(["build-js", "build-css"]));
 
-gulp.task("watch", gulp.series(["build", "watch-js", "watch-css"]));
+gulp.task("watch", gulp.parallel(["build", "watch-js", "watch-css"]));
 
 gulp.task("default", gulp.series(["build"]));

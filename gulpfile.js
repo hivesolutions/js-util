@@ -1,3 +1,4 @@
+const log = require("fancy-log");
 const gulp = require("gulp");
 const size = require("gulp-size");
 const count = require("gulp-count");
@@ -5,8 +6,8 @@ const mocha = require("gulp-mocha");
 const jsdoc = require("gulp-jsdoc3");
 const eslint = require("gulp-eslint");
 const cssnano = require("gulp-cssnano");
-const uglifyes = require("gulp-uglifyes");
 const replace = require("gulp-replace");
+const terser = require("gulp-terser");
 const _package = require("./package.json");
 
 const paths = {
@@ -20,7 +21,7 @@ gulp.task("build-js", () => {
     return gulp
         .src(paths.scripts)
         .pipe(
-            uglifyes({
+            terser({
                 mangle: false,
                 ecma: 5
             })
@@ -33,7 +34,12 @@ gulp.task("build-js", () => {
             })
         )
         .pipe(gulp.dest("dist"))
-        .pipe(count("## js files copied"));
+        .pipe(
+            count({
+                message: "## js files copied",
+                logger: msg => log(msg)
+            })
+        );
 });
 
 gulp.task("build-css", () => {
@@ -57,11 +63,11 @@ gulp.task("docs", cb => {
 });
 
 gulp.task("watch-js", () => {
-    gulp.watch(paths.scripts, ["build-js"]);
+    gulp.watch(paths.scripts, gulp.series(["build-js"]));
 });
 
 gulp.task("watch-css", () => {
-    gulp.watch(paths.css, ["build-css"]);
+    gulp.watch(paths.css, gulp.series(["build-css"]));
 });
 
 gulp.task("lint", () => {
@@ -80,8 +86,8 @@ gulp.task("test", () => {
     );
 });
 
-gulp.task("watch", ["build", "watch-js", "watch-css"]);
+gulp.task("build", gulp.series(["build-js", "build-css"]));
 
-gulp.task("build", ["build-js", "build-css"]);
+gulp.task("watch", gulp.series(["build", "watch-js", "watch-css"]));
 
-gulp.task("default", ["build"]);
+gulp.task("default", gulp.series(["build"]));

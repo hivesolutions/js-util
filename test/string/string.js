@@ -38,14 +38,8 @@ describe("String", function() {
     });
     describe("#format()", function() {
         it("should properly format a string", () => {
-            assert.strictEqual(
-                "{0} {1}".format("Hello", "World"),
-                "Hello World"
-            );
-            assert.strictEqual(
-                String.format("{0} {1}", "Hello", "World"),
-                "Hello World"
-            );
+            assert.strictEqual("{0} {1}".format("Hello", "World"), "Hello World");
+            assert.strictEqual(String.format("{0} {1}", "Hello", "World"), "Hello World");
         });
     });
     describe("#formatOptions()", function() {

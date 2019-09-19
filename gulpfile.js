@@ -78,6 +78,15 @@ gulp.task("lint", () => {
         .pipe(eslint.failAfterError());
 });
 
+gulp.task("lint-fix", () => {
+    return gulp
+        .src(paths.scripts)
+        .pipe(eslint({ fix: true }))
+        .pipe(eslint.format())
+        .pipe(gulp.dest(file => file.base))
+        .pipe(eslint.failAfterError());
+});
+
 gulp.task("test", () => {
     return gulp.src(paths.test).pipe(
         mocha({

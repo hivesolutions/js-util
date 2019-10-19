@@ -16,4 +16,4 @@ deploy:
     secure: N9HAKDpIRvh1EbtGp+Q/vRlaJOxJtt/YItDy1MZK/kN6Wso8HBESP++SuA8w5N9cWI04ijKeB0Fgzww8tiDIHXruvWz8/itiCLrNwg/9ZseeWK7ns7FLgB8YlCME2cS7nCwoaUfyoo9IyCoamtRfmhfNVkN3iF3VdI2JCwtGi4o=
   on:
     tags: true
-    node_js: "7"
+    node_js: "8"

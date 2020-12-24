@@ -18,12 +18,15 @@
     },
     "license": "Apache-2.0",
     "author": "Hive Solutions",
+    "types": "types/index.d.ts",
+    "typings": "types/index.d.ts",
     "files": [
         "index.js",
         "gulpfile.js",
         "lib/**/*.js",
         "lib/**/*.css",
-        "test/**/*.js"
+        "test/**/*.js",
+        "types/**/*.d.ts"
     ],
     "main": "index.js",
     "scripts": {

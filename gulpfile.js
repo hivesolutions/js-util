@@ -72,7 +72,7 @@ gulp.task("watch-css", () => {
 
 gulp.task("lint", () => {
     return gulp
-        .src(paths.scripts)
+        .src([paths.scripts, paths.test])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
@@ -80,7 +80,7 @@ gulp.task("lint", () => {
 
 gulp.task("lint-fix", () => {
     return gulp
-        .src(paths.scripts)
+        .src([paths.scripts, paths.test])
         .pipe(eslint({ fix: true }))
         .pipe(eslint.format())
         .pipe(gulp.dest(file => file.base))

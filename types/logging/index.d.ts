@@ -17,11 +17,14 @@ export declare namespace Logging {
         DEFAULT_LOGGER_NAME
     }
 
-    function getLogger(loggerName?: string, defaults?: {
-        handlers?: Handler[],
-        formatter?: Formatter,
-        level?: number
-    }): Logger;
+    function getLogger(
+        loggerName?: string,
+        defaults?: {
+            handlers?: Handler[];
+            formatter?: Formatter;
+            level?: number;
+        }
+    ): Logger;
     function debug(messageValue: string): void;
     function info(messageValue: string): void;
     function warn(messageValue: string): void;
@@ -49,7 +52,7 @@ export declare namespace Logging {
 
     class Formatter {}
     class SimpleFormatter extends Formatter {
-        constructor(formatString?: string)
+        constructor(formatString?: string);
     }
 
     class Handler {

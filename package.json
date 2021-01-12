@@ -35,7 +35,7 @@
         "gulp": "gulp",
         "lint": "gulp lint",
         "lint-fix": "gulp lint-fix",
-        "prettier": "prettier \"./*.{js,json}\" \"./!(dist)/**/*.{js,json}\" --write",
+        "prettier": "prettier \"./*.{js,ts,json}\" \"./!(dist)/**/*.{js,ts,json}\" --write",
         "pretty": "npm run prettier && npm run lint-fix",
         "test": "gulp test",
         "upgrade": "npx sort-package-json && ncu -u",

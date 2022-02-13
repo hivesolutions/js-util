@@ -1,20 +1,20 @@
 export declare namespace Logging {
     enum constants {
-        CRITICAL,
-        ERROR,
-        WARNING,
-        INFO,
-        DEBUG,
-        NOTSET,
-        DEFAULT_LEVEL,
-        CRITICAL_VALUE,
-        ERROR_VALUE,
-        WARNING_VALUE,
-        INFO_VALUE,
-        DEBUG_VALUE,
-        NOTSET_VALUE,
-        DEFAULT_LEVEL_VALUE,
-        DEFAULT_LOGGER_NAME
+        CRITICAL = 50,
+        ERROR = 40,
+        WARNING = 30,
+        INFO = 20,
+        DEBUG = 10,
+        NOTSET = 0,
+        DEFAULT_LEVEL = 20,
+        CRITICAL_VALUE = "CRITICAL",
+        ERROR_VALUE = "ERROR",
+        WARNING_VALUE = "WARNING",
+        INFO_VALUE = "INFO",
+        DEBUG_VALUE = "DEBUG",
+        NOTSET_VALUE = "NOTSET",
+        DEFAULT_LEVEL_VALUE = "INFO",
+        DEFAULT_LOGGER_NAME = "default"
     }
 
     function getLogger(

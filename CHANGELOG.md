@@ -13,11 +13,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-* Added `ctx` support for logstash logging
+*
 
 ### Fixed
 
 *
+
+## [0.5.1] - 2024-02-27
+
+### Changed
+
+* Added `ctx` support for logstash logging
 
 ## [0.5.0] - 2024-02-27
 

@@ -1,3 +1,7 @@
+export type LoggingContext = {
+    [key: string]: string;
+};
+
 export declare namespace Logging {
     enum constants {
         CRITICAL = 50,
@@ -67,7 +71,7 @@ export declare namespace Logging {
     }
     class LoggyHandler extends Handler {}
     class LogstashHandler extends Handler {
-        constructor(url: string);
+        constructor(url: string, ctx?: LoggingContext);
         static isReady(url: string): boolean;
     }
     class StreamHandler {}

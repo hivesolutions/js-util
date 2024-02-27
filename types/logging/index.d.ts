@@ -1,5 +1,5 @@
 export type LoggingContext = {
-    [key: string]: string;
+    [key: string]: string | number | boolean | null | undefined;
 };
 
 export declare namespace Logging {

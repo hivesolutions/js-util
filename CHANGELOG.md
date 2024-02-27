@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 * Rename repository to `js-util`
+* Support for the Logstash handler
 
 ### Fixed
 

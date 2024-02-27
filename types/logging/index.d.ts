@@ -48,16 +48,27 @@ export declare namespace Logging {
         callHandlers(record: Record): void;
     }
 
-    class Record {}
+    class Record {
+        constructor(message: string, level: number);
+
+        getMessage(): string;
+        getLevel(): number;
+        getLevelString(): string;
+    }
 
     class Formatter {}
     class SimpleFormatter extends Formatter {
         constructor(formatString?: string);
     }
 
-    class Handler {
+    class Handler {}
+    class ConsolaHandler extends Handler {
         static isReady(): boolean;
     }
-    class ConsolaHandler extends Handler {}
+    class LoggyHandler extends Handler {}
+    class LogstashHandler extends Handler {
+        constructor(url: string);
+        static isReady(url: string): boolean;
+    }
     class StreamHandler {}
 }

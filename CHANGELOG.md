@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [0.5.3] - 2024-02-28
+
+### Added
+
+* Support for more base param in logging
+
 ## [0.5.2] - 2024-02-27
 
 ### Fixed

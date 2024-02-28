@@ -36,6 +36,10 @@ export declare namespace Logging {
     function error(messageValue: string): void;
     function critical(messageValue: string): void;
 
+    type LogstashOptions = {
+        poweredBy?: string;
+    };
+
     class Logger {
         addHandler(handler: Handler): void;
         setLevel(level: string): void;
@@ -71,7 +75,7 @@ export declare namespace Logging {
     }
     class LoggyHandler extends Handler {}
     class LogstashHandler extends Handler {
-        constructor(url: string, ctx?: LoggingContext);
+        constructor(url: string, ctx?: LoggingContext, options?: LogstashOptions);
         static isReady(url: string): boolean;
     }
     class StreamHandler {}

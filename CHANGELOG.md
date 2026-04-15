@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-*
+* Zero-padding for hours, minutes, seconds and milliseconds in logging timestamp
 
 ## [0.5.3] - 2024-02-28
 

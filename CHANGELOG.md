@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 * Zero-padding for hours, minutes, seconds and milliseconds in logging timestamp
+* `ConsolaHandler` constructor no longer crashes with `TypeError: Cannot read properties of undefined (reading 'Debug')` when paired with `consola@^3`, which dropped the `LogLevel` enum that `consola@^2` exposed; the handler now resolves the numeric debug level defensively as `consola.LogLevel ? consola.LogLevel.Debug : 4`, falling back to the same numeric value `consola@^2`'s `LogLevel.Debug` resolved to (4) and that `consola@^3` still accepts as a level value, so the handler is backward compatible across both major versions without requiring downstream consumers to pin a specific consola version
 
 ## [0.5.3] - 2024-02-28
 

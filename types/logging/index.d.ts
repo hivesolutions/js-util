@@ -27,28 +27,33 @@ export declare namespace Logging {
             handlers?: Handler[];
             formatter?: Formatter;
             level?: number;
+            propagate?: boolean;
         }
     ): Logger;
-    function debug(messageValue: string): void;
-    function info(messageValue: string): void;
-    function warn(messageValue: string): void;
-    function warning(messageValue: string): void;
-    function error(messageValue: string): void;
-    function critical(messageValue: string): void;
+    function debug(messageValue: any, ...args: any[]): void;
+    function info(messageValue: any, ...args: any[]): void;
+    function warn(messageValue: any, ...args: any[]): void;
+    function warning(messageValue: any, ...args: any[]): void;
+    function error(messageValue: any, ...args: any[]): void;
+    function critical(messageValue: any, ...args: any[]): void;
 
     type LogstashOptions = {
         poweredBy?: string;
     };
 
     class Logger {
+        constructor(loggerName: string, level?: number, handlers?: Handler[], propagate?: boolean);
+
+        propagate: boolean;
+
         addHandler(handler: Handler): void;
         setLevel(level: string): void;
-        debug(messageValue: string): void;
-        info(messageValue: string): void;
-        warn(messageValue: string): void;
-        warning(messageValue: string): void;
-        error(messageValue: string): void;
-        critical(messageValue: string): void;
+        debug(messageValue: any, ...args: any[]): void;
+        info(messageValue: any, ...args: any[]): void;
+        warn(messageValue: any, ...args: any[]): void;
+        warning(messageValue: any, ...args: any[]): void;
+        error(messageValue: any, ...args: any[]): void;
+        critical(messageValue: any, ...args: any[]): void;
         isEnabledFor(level: string): void;
         getEffectiveLevel(): void;
         setFormatter(formatter: Formatter): void;
@@ -57,16 +62,23 @@ export declare namespace Logging {
     }
 
     class Record {
-        constructor(message: string, level: number);
+        constructor(message: string, level: number, name?: string, args?: any[]);
 
         getMessage(): string;
         getLevel(): number;
         getLevelString(): string;
+        getName(): string;
+        getArgs(): any[];
+        getCreated(): Date;
     }
 
-    class Formatter {}
+    class Formatter {
+        format(record: Record): string;
+        formatArgs(record: Record, colors?: string | null): any[];
+    }
     class SimpleFormatter extends Formatter {
         constructor(formatString?: string);
+        static selectColor(name: string, styles: string[]): string;
     }
 
     class Handler {}
@@ -78,5 +90,8 @@ export declare namespace Logging {
         constructor(url: string, ctx?: LoggingContext, options?: LogstashOptions);
         static isReady(url: string): boolean;
     }
-    class StreamHandler {}
+    class StreamHandler extends Handler {
+        constructor(stream?: Console, colors?: string | null);
+        static getColors(): string | null;
+    }
 }

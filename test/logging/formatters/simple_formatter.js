@@ -152,6 +152,16 @@ describe("SimpleFormatter", function() {
             assert.deepStrictEqual(formatter.formatArgs(record, "css"), ["%s", "hello world", 1]);
             const literal = new util.Logging.Record("100% %s", 20, "uscan", [1]);
             assert.deepStrictEqual(formatter.formatArgs(literal, "css"), ["%s", "100% %s", 1]);
+            const single = createRecord(util.Logging.constants.INFO, "uscan");
+            assert.deepStrictEqual(formatter.formatArgs(single, "css"), ["hello world"]);
+        });
+        it("should keep the messages that are not strings inspectable", () => {
+            const formatter = new util.Logging.SimpleFormatter("{message}");
+            const message = { key: "value" };
+            const record = new util.Logging.Record(message, 20, "uscan", [1]);
+            const args = formatter.formatArgs(record, "css");
+            assert.deepStrictEqual(args, [message, 1]);
+            assert.strictEqual(args[0], message);
         });
         it("should escape the percent signs interpreted as a format", () => {
             const colors = util.Logging.SimpleFormatter.COLORS.css;

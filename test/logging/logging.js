@@ -241,6 +241,14 @@ describe("Handler", function() {
             const record = new util.Logging.Record("100% %s %d", 20, "uscan", ["value"]);
             assert.deepStrictEqual(handler.formatArgs(record), ["%s", "100% %s %d", "value"]);
         });
+        it("should keep the messages that are not strings inspectable without a formatter", () => {
+            const handler = new util.Logging.Handler();
+            const message = { key: "value" };
+            const record = new util.Logging.Record(message, 20, "uscan", [1]);
+            const args = handler.formatArgs(record);
+            assert.deepStrictEqual(args, [message, 1]);
+            assert.strictEqual(args[0], message);
+        });
         it("should be able to format the arguments with a formatter of messages", () => {
             const handler = new util.Logging.Handler();
             handler.setFormatter({ format: record => "formatted " + record.getMessage() });
@@ -271,6 +279,15 @@ describe("Formatter", function() {
             ]);
             const single = new util.Logging.Record("hello world", 20, "uscan");
             assert.deepStrictEqual(formatter.formatArgs(single), ["formatted hello world"]);
+        });
+        it("should keep the messages that are not strings inspectable", () => {
+            const formatter = new util.Logging.Formatter();
+            formatter.format = record => record.getMessage();
+            const message = { key: "value" };
+            const record = new util.Logging.Record(message, 20, "uscan", [1, 2]);
+            const args = formatter.formatArgs(record);
+            assert.deepStrictEqual(args, [message, 1, 2]);
+            assert.strictEqual(args[0], message);
         });
     });
 });

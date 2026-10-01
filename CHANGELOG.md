@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+*
+
+### Changed
+
+*
+
+### Fixed
+
+*
+
+## [0.6.0] - 2026-10-01
+
+### Added
+
 * Colors in the log messages, in the browser console and in terminals, respecting the standard environment variables that disable or force them - [#7](https://github.com/hivesolutions/js-util/issues/7)
 * Name of the logger and extra values, such as objects, in the log messages - [#7](https://github.com/hivesolutions/js-util/issues/7)
 * Propagation of the log messages of a logger to the default logger - [#7](https://github.com/hivesolutions/js-util/issues/7)

@@ -12,7 +12,7 @@ const createStream = function(names) {
     return stream;
 };
 
-const withEnvironment = function(values, isTTY, callable) {
+const withEnvironment = function(values, isTTY, callable, isErrorTTY) {
     const previous = {};
     for (const key of Object.keys(values)) {
         previous[key] = process.env[key];
@@ -20,10 +20,14 @@ const withEnvironment = function(values, isTTY, callable) {
         else process.env[key] = values[key];
     }
     const stdout = process.stdout;
+    const stderr = process.stderr;
     const previousTTY = stdout ? stdout.isTTY : undefined;
+    const previousErrorTTY = stderr ? stderr.isTTY : undefined;
     if (stdout) stdout.isTTY = isTTY;
+    if (stderr) stderr.isTTY = isErrorTTY === undefined ? isTTY : isErrorTTY;
     const result = callable();
     if (stdout) stdout.isTTY = previousTTY;
+    if (stderr) stderr.isTTY = previousErrorTTY;
     for (const key of Object.keys(previous)) {
         if (previous[key] === undefined) delete process.env[key];
         else process.env[key] = previous[key];
@@ -58,6 +62,13 @@ describe("StreamHandler", function() {
                 null
             );
         });
+        it("should not detect the colors of terminals with the errors redirected", () => {
+            const values = { NO_COLOR: undefined, FORCE_COLOR: undefined };
+            assert.strictEqual(
+                withEnvironment(values, true, () => util.Logging.StreamHandler.getColors(), false),
+                null
+            );
+        });
         it("should respect the colors of the environment", () => {
             assert.strictEqual(
                 withEnvironment({ NO_COLOR: "1", FORCE_COLOR: "1" }, true, () =>
@@ -71,6 +82,20 @@ describe("StreamHandler", function() {
                 ),
                 "ansi"
             );
+            assert.strictEqual(
+                withEnvironment({ NO_COLOR: undefined, FORCE_COLOR: "" }, false, () =>
+                    util.Logging.StreamHandler.getColors()
+                ),
+                "ansi"
+            );
+            for (const value of ["0", "false"]) {
+                assert.strictEqual(
+                    withEnvironment({ NO_COLOR: undefined, FORCE_COLOR: value }, true, () =>
+                        util.Logging.StreamHandler.getColors()
+                    ),
+                    null
+                );
+            }
         });
         it("should detect the colors of the browser", () => {
             const descriptor = Object.getOwnPropertyDescriptor(process, "stdout");

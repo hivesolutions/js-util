@@ -24,8 +24,8 @@ export declare namespace Logging {
     function getLogger(
         loggerName?: string,
         defaults?: {
-            handlers?: Handler[];
-            formatter?: Formatter;
+            handlers?: (new () => Handler)[];
+            formatter?: new () => Formatter;
             level?: number;
             propagate?: boolean;
         }
@@ -47,24 +47,24 @@ export declare namespace Logging {
         propagate: boolean;
 
         addHandler(handler: Handler): void;
-        setLevel(level: string): void;
+        setLevel(level: number): void;
         debug(messageValue: any, ...args: any[]): void;
         info(messageValue: any, ...args: any[]): void;
         warn(messageValue: any, ...args: any[]): void;
         warning(messageValue: any, ...args: any[]): void;
         error(messageValue: any, ...args: any[]): void;
         critical(messageValue: any, ...args: any[]): void;
-        isEnabledFor(level: string): void;
-        getEffectiveLevel(): void;
+        isEnabledFor(level: number): boolean;
+        getEffectiveLevel(): number;
         setFormatter(formatter: Formatter): void;
         handle(record: Record): void;
         callHandlers(record: Record): void;
     }
 
     class Record {
-        constructor(message: string, level: number, name?: string, args?: any[]);
+        constructor(message: any, level: number, name?: string, args?: any[]);
 
-        getMessage(): string;
+        getMessage(): any;
         getLevel(): number;
         getLevelString(): string;
         getName(): string;
@@ -90,8 +90,15 @@ export declare namespace Logging {
         constructor(url: string, ctx?: LoggingContext, options?: LogstashOptions);
         static isReady(url: string): boolean;
     }
+    type Stream = {
+        debug?(...args: any[]): void;
+        info(...args: any[]): void;
+        warn?(...args: any[]): void;
+        error?(...args: any[]): void;
+    };
+
     class StreamHandler extends Handler {
-        constructor(stream?: Console, colors?: string | null);
+        constructor(stream?: Stream, colors?: string | null);
         static getColors(): string | null;
     }
 }

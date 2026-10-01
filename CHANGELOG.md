@@ -20,7 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-*
+* Loading the logging more than once (eg: bundled in other libraries) keeps the existing loggers - [#7](https://github.com/hivesolutions/js-util/issues/7)
+* Time of the log messages formatted in older browsers, with no support for padding strings - [#7](https://github.com/hivesolutions/js-util/issues/7)
+* Types of the levels, messages and defaults of the loggers - [#7](https://github.com/hivesolutions/js-util/issues/7)
 
 ## [0.5.4] - 2026-05-21
 

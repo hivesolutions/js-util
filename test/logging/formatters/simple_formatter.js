@@ -55,20 +55,30 @@ describe("SimpleFormatter", function() {
             const formatter = new util.Logging.SimpleFormatter("{level} {name} {message}");
             const record = createRecord(util.Logging.constants.INFO, "uscan", [1, "two"]);
             assert.deepStrictEqual(formatter.formatArgs(record), [
+                "%s",
                 "INFO uscan hello world",
                 1,
                 "two"
             ]);
             assert.deepStrictEqual(formatter.formatArgs(record, null), [
+                "%s",
                 "INFO uscan hello world",
                 1,
                 "two"
             ]);
             assert.deepStrictEqual(formatter.formatArgs(record, "invalid"), [
+                "%s",
                 "INFO uscan hello world",
                 1,
                 "two"
             ]);
+            const single = createRecord(util.Logging.constants.INFO, "uscan");
+            assert.deepStrictEqual(formatter.formatArgs(single), ["INFO uscan hello world"]);
+        });
+        it("should not interpret the message as a format without colors", () => {
+            const formatter = new util.Logging.SimpleFormatter("{name} {message}");
+            const record = new util.Logging.Record("100% %s", 20, "uscan", ["value"]);
+            assert.deepStrictEqual(formatter.formatArgs(record), ["%s", "uscan 100% %s", "value"]);
         });
         it("should format with CSS colors", () => {
             const colors = util.Logging.SimpleFormatter.COLORS.css;
@@ -139,7 +149,9 @@ describe("SimpleFormatter", function() {
         it("should format the message alone when there is nothing before it", () => {
             const formatter = new util.Logging.SimpleFormatter("{message}");
             const record = createRecord(util.Logging.constants.INFO, "uscan", [1]);
-            assert.deepStrictEqual(formatter.formatArgs(record, "css"), ["hello world", 1]);
+            assert.deepStrictEqual(formatter.formatArgs(record, "css"), ["%s", "hello world", 1]);
+            const literal = new util.Logging.Record("100% %s", 20, "uscan", [1]);
+            assert.deepStrictEqual(formatter.formatArgs(literal, "css"), ["%s", "100% %s", 1]);
         });
         it("should escape the percent signs interpreted as a format", () => {
             const colors = util.Logging.SimpleFormatter.COLORS.css;
@@ -182,6 +194,24 @@ describe("SimpleFormatter", function() {
                 name: "uscan",
                 message: "hello world"
             });
+        });
+        it("should retrieve the options without padStart and repeat", () => {
+            const formatter = new util.Logging.SimpleFormatter();
+            const record = createRecord(util.Logging.constants.CRITICAL, "uscan", [1]);
+            const padStart = String.prototype.padStart;
+            const repeat = String.prototype.repeat;
+            delete String.prototype.padStart;
+            delete String.prototype.repeat;
+            let options = null;
+            try {
+                options = formatter.getOptions(record);
+            } finally {
+                // eslint-disable-next-line no-extend-native
+                String.prototype.padStart = padStart;
+                // eslint-disable-next-line no-extend-native
+                String.prototype.repeat = repeat;
+            }
+            assert.strictEqual(options.asctime, "2026-01-02 03:04:05,006");
         });
     });
 });

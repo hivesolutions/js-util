@@ -1,4 +1,6 @@
 const assert = require("assert");
+const fs = require("fs");
+const vm = require("vm");
 const util = require("../../");
 
 const capture = function(logger, callable) {
@@ -13,6 +15,14 @@ const capture = function(logger, callable) {
 
 describe("Logging", function() {
     describe("#getLogger()", function() {
+        it("should keep the loggers of a previous loading", () => {
+            const source = fs.readFileSync(require.resolve("../../lib/logging/logging"), "utf8");
+            const logger = {};
+            const context = { global: { Logging: { loggers: { kept: logger } } } };
+            vm.runInNewContext(source, context);
+            assert.strictEqual(context.global.Logging.loggers.kept, logger);
+            assert.notStrictEqual(context.global.Logging.getLogger, undefined);
+        });
         it("should be able to retrieve a proper Logger instance", () => {
             assert.notStrictEqual(util.Logging.getLogger("default"), null);
             assert.notStrictEqual(util.Logging.getLogger("default"), undefined);
@@ -222,13 +232,20 @@ describe("Handler", function() {
         it("should be able to format the arguments without a formatter", () => {
             const handler = new util.Logging.Handler();
             const record = new util.Logging.Record("hello world", 20, "uscan", [1]);
-            assert.deepStrictEqual(handler.formatArgs(record), ["hello world", 1]);
+            assert.deepStrictEqual(handler.formatArgs(record), ["%s", "hello world", 1]);
+            const single = new util.Logging.Record("hello world", 20, "uscan");
+            assert.deepStrictEqual(handler.formatArgs(single), ["hello world"]);
+        });
+        it("should not interpret the message as a format without a formatter", () => {
+            const handler = new util.Logging.Handler();
+            const record = new util.Logging.Record("100% %s %d", 20, "uscan", ["value"]);
+            assert.deepStrictEqual(handler.formatArgs(record), ["%s", "100% %s %d", "value"]);
         });
         it("should be able to format the arguments with a formatter of messages", () => {
             const handler = new util.Logging.Handler();
             handler.setFormatter({ format: record => "formatted " + record.getMessage() });
             const record = new util.Logging.Record("hello world", 20, "uscan", [1]);
-            assert.deepStrictEqual(handler.formatArgs(record), ["formatted hello world", 1]);
+            assert.deepStrictEqual(handler.formatArgs(record), ["%s", "formatted hello world", 1]);
         });
         it("should be able to format the arguments with the colors of the handler", () => {
             const handler = new util.Logging.Handler();
@@ -247,10 +264,13 @@ describe("Formatter", function() {
             formatter.format = record => "formatted " + record.getMessage();
             const record = new util.Logging.Record("hello world", 20, "uscan", [1, 2]);
             assert.deepStrictEqual(formatter.formatArgs(record, "css"), [
+                "%s",
                 "formatted hello world",
                 1,
                 2
             ]);
+            const single = new util.Logging.Record("hello world", 20, "uscan");
+            assert.deepStrictEqual(formatter.formatArgs(single), ["formatted hello world"]);
         });
     });
 });

@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+*
+
+## [0.6.1] - 2026-11-08
+
+### Fixed
+
 * Loading under Node.js 21 or newer, where the global navigator is read-only and bundles in strict mode failed at startup
 
 ## [0.6.0] - 2026-10-01

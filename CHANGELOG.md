@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-*
+* Elements that take their touches natively, without the emulated mouse events, for smoother swipes - [hivesolutions/ustore-neo#213](https://github.com/hivesolutions/ustore-neo/issues/213)
 
 ### Changed
 
